@@ -8,7 +8,7 @@ const links = [
 
 export function Nav() {
   return (
-    <nav className="border-b border-zinc-200 bg-white">
+    <nav className="border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
       <div className="mx-auto flex max-w-3xl items-center gap-6 px-4 py-4">
         <Link href="/" className="text-lg font-bold tracking-tight">
           mzdrowy
@@ -18,7 +18,7 @@ export function Nav() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-zinc-600 transition-colors hover:text-zinc-900"
+              className="text-zinc-600 dark:text-zinc-400 transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
             >
               {link.label}
             </Link>
