@@ -15,27 +15,33 @@ export default function Home() {
       <section className="mb-16">
         <h2 className="mb-6 text-2xl font-semibold">Książki</h2>
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link
-            href="/ksiazki"
+          <a
+            href="/books/Internet, Domeny i DNS – Podręcznik edukacyjny od podstaw.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-xl border border-zinc-200 bg-white p-6 transition-shadow hover:shadow-md"
           >
             <h3 className="mb-2 font-semibold">Internet, Domeny i DNS</h3>
             <p className="text-sm text-zinc-500">Podręcznik edukacyjny od podstaw</p>
-          </Link>
-          <Link
-            href="/ksiazki"
+          </a>
+          <a
+            href="/books/Pod skórą systemu.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-xl border border-zinc-200 bg-white p-6 transition-shadow hover:shadow-md"
           >
             <h3 className="mb-2 font-semibold">Pod skórą systemu</h3>
             <p className="text-sm text-zinc-500">W głąb architektury komputerów</p>
-          </Link>
-          <Link
-            href="/ksiazki"
+          </a>
+          <a
+            href="/books/Sztuczna inteligencja bez tajemnic.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-xl border border-zinc-200 bg-white p-6 transition-shadow hover:shadow-md sm:col-span-2"
           >
             <h3 className="mb-2 font-semibold">Sztuczna inteligencja bez tajemnic</h3>
             <p className="text-sm text-zinc-500">AI wyjaśniona przystępnie</p>
-          </Link>
+          </a>
         </div>
       </section>
 
