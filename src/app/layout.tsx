@@ -30,7 +30,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <footer className="border-t border-zinc-200 py-6 text-center text-sm text-zinc-500">
           <p>&copy; {new Date().getFullYear()} Moja Strona</p>
-          <p className="mt-1">mzdrowy@gmail.com</p>
+          <p className="mt-1"><a href="mailto:mzdrowy@gmail.com" className="hover:text-zinc-700 transition-colors">mzdrowy@gmail.com</a></p>
         </footer>
       </body>
     </html>
