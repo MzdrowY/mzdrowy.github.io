@@ -11,9 +11,6 @@ export default function Home() {
         <p className="text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
           Znajdziesz tutaj moje książki oraz programy, które stworzyłem.
         </p>
-        <p className="mt-4 text-base italic text-zinc-500 dark:text-zinc-400">
-          Piszę, gotuję albo koduję. A to moje wypociny, które przy okazji ugotowałem.
-        </p>
       </section>
 
       <section className="mb-16">
