@@ -29,7 +29,8 @@ export default function RootLayout({
         <Nav />
         <main className="flex-1">{children}</main>
         <footer className="border-t border-zinc-200 py-6 text-center text-sm text-zinc-500">
-          &copy; {new Date().getFullYear()} Moja Strona
+          <p>&copy; {new Date().getFullYear()} Moja Strona</p>
+          <p className="mt-1">mzdrowy@gmail.com</p>
         </footer>
       </body>
     </html>
