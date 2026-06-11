@@ -1,9 +1,31 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { books } from "@/lib/books";
 import { TrackedLink } from "@/components/tracked-link";
 
 export const dynamic = "force-static";
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const book = books.find((b) => b.slug === slug);
+  if (!book) return {};
+  return {
+    title: book.title,
+    description: book.description,
+    openGraph: {
+      title: `${book.title} — ${book.subtitle}`,
+      description: book.description,
+      images: ["/og-image.png"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${book.title} — ${book.subtitle}`,
+      description: book.description,
+      images: ["/og-image.png"],
+    },
+  };
+}
 
 export function generateStaticParams() {
   return books.map((book) => ({ slug: book.slug }));

@@ -27,11 +27,20 @@ export const metadata: Metadata = {
     siteName: "MzdrowY",
     locale: "pl_PL",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "MzdrowY — ebooki i programy",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "MzdrowY — ebooki i programy",
     description: "Piszę, gotuję albo koduję. Trzy ebooki i autorskie programy.",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
