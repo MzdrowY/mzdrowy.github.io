@@ -1,6 +1,14 @@
 import Link from "next/link";
 import { books } from "@/lib/books";
 
+const programs = [
+  {
+    title: "Anti-Spaghetti Notatnik",
+    subtitle: "Podręczny notatnik-składnica z ochroną PIN",
+    slug: "anti-spaghetti",
+  },
+];
+
 export default function Home() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
@@ -34,12 +42,21 @@ export default function Home() {
 
       <section>
         <h2 className="mb-6 text-2xl font-semibold">Programy</h2>
-        <Link
-          href="/programy"
-          className="block rounded-xl border border-zinc-700 bg-zinc-900 p-6 transition-shadow hover:shadow-md"
-        >
-          <p className="text-sm text-zinc-400">Zobacz dostępne programy &rarr;</p>
-        </Link>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {programs.map((p) => (
+            <Link
+              key={p.slug}
+              href="/programy"
+              className="rounded-xl border border-zinc-700 bg-zinc-900 p-6 transition-shadow hover:shadow-md"
+            >
+              <h3 className="mb-2 font-semibold">{p.title}</h3>
+              <p className="mb-3 text-sm text-zinc-400">{p.subtitle}</p>
+              <span className="text-sm font-medium text-blue-400">
+                Zobacz dostępne programy &rarr;
+              </span>
+            </Link>
+          ))}
+        </div>
       </section>
     </div>
   );
