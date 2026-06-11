@@ -8,8 +8,9 @@ export function generateStaticParams() {
   return programs.map((p) => ({ slug: p.slug }));
 }
 
-export default function ProgramPage({ params }: { params: { slug: string } }) {
-  const program = programs.find((p) => p.slug === params.slug);
+export default async function ProgramPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const program = programs.find((p) => p.slug === slug);
   if (!program) notFound();
 
   const sizeMB = (program.installerSize / (1024 * 1024)).toFixed(1);
