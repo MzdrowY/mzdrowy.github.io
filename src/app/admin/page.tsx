@@ -64,11 +64,11 @@ export default function AdminPage() {
           value={pw}
           onChange={(e) => setPw(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleLogin()}
-          className="mb-4 w-full rounded-lg border border-zinc-300 px-4 py-2 text-center text-zinc-900 outline-none focus:border-zinc-500 dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-100"
+          className="mb-4 w-full rounded-lg border border-zinc-600 bg-zinc-800 px-4 py-2 text-center text-zinc-100 outline-none focus:border-zinc-500"
         />
         <button
           onClick={handleLogin}
-          className="w-full rounded-lg bg-zinc-900 px-4 py-2 text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+          className="w-full rounded-lg bg-zinc-100 px-4 py-2 text-zinc-900 transition-colors hover:bg-zinc-300"
         >
           Zaloguj
         </button>
@@ -88,9 +88,9 @@ export default function AdminPage() {
           {Object.entries(counts).map(([label, count]) => (
             <div
               key={label}
-              className="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-700 dark:bg-zinc-900"
+              className="rounded-xl border border-zinc-700 bg-zinc-900 p-6"
             >
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">{label}</p>
+              <p className="text-sm text-zinc-400">{label}</p>
               <p className="text-3xl font-bold tracking-tight">{count}</p>
             </div>
           ))}

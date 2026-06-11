@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node -e \"require('fs').existsSync('out/favicon.ico') && require('fs').unlinkSync('out/favicon.ico')\"",
     "start": "next start",
     "lint": "eslint"
   },

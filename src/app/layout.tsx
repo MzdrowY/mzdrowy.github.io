@@ -37,6 +37,11 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -46,12 +51,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-      <body className="min-h-dvh flex flex-col bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans">
+      <body className="min-h-dvh flex flex-col bg-zinc-950 text-zinc-100 font-sans">
         <Nav />
         <main className="flex-1">{children}</main>
-        <footer className="border-t border-zinc-200 dark:border-zinc-800 py-6 text-center text-sm text-zinc-500 dark:text-zinc-400">
+        <footer className="border-t border-zinc-800 py-6 text-center text-sm text-zinc-400">
           <p>&copy; {new Date().getFullYear()} Moja Strona</p>
-          <p className="mt-1"><a href="mailto:mzdrowy@gmail.com" className="hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors">mzdrowy@gmail.com</a></p>
+          <p className="mt-1"><a href="mailto:mzdrowy@gmail.com" className="hover:text-zinc-300 transition-colors">mzdrowy@gmail.com</a></p>
         </footer>
       </body>
     </html>
