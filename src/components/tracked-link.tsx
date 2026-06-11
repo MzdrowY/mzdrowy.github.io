@@ -8,7 +8,7 @@ const names: Record<string, string> = {
   "/books/Sztuczna inteligencja bez tajemnic.pdf": "Sztuczna inteligencja bez tajemnic",
 };
 
-export function TrackedLink({ href, children, className }: { href: string; children: ReactNode; className?: string }) {
+export function TrackedLink({ href, children, className, download }: { href: string; children: ReactNode; className?: string; download?: boolean }) {
   const handleClick = () => {
     const key = names[href] ?? href;
     fetch(`https://api.countapi.xyz/hit/mzdrowy/${encodeURIComponent(key)}`).catch(() => {});
@@ -16,7 +16,7 @@ export function TrackedLink({ href, children, className }: { href: string; child
   };
 
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className={className} onClick={handleClick}>
+    <a href={href} target={download ? undefined : "_blank"} rel={download ? undefined : "noopener noreferrer"} className={className} onClick={handleClick} download={download || undefined}>
       {children}
     </a>
   );

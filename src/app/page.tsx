@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { TrackedLink } from "@/components/tracked-link";
+import { books } from "@/lib/books";
 
 export default function Home() {
   return (
@@ -16,27 +16,19 @@ export default function Home() {
       <section className="mb-16">
         <h2 className="mb-6 text-2xl font-semibold">Ebooki</h2>
         <div className="grid gap-4 sm:grid-cols-2">
-          <TrackedLink
-            href="/books/Internet, Domeny i DNS – Podręcznik edukacyjny od podstaw.pdf"
-            className="rounded-xl border border-zinc-700 bg-zinc-900 p-6 transition-shadow hover:shadow-md"
-          >
-            <h3 className="mb-2 font-semibold">Internet, Domeny i DNS</h3>
-            <p className="text-sm text-zinc-400">Podręcznik edukacyjny od podstaw</p>
-          </TrackedLink>
-          <TrackedLink
-            href="/books/Pod skórą systemu.pdf"
-            className="rounded-xl border border-zinc-700 bg-zinc-900 p-6 transition-shadow hover:shadow-md"
-          >
-            <h3 className="mb-2 font-semibold">Pod skórą systemu</h3>
-            <p className="text-sm text-zinc-400">W głąb architektury komputerów</p>
-          </TrackedLink>
-          <TrackedLink
-            href="/books/Sztuczna inteligencja bez tajemnic.pdf"
-            className="rounded-xl border border-zinc-700 bg-zinc-900 p-6 transition-shadow hover:shadow-md sm:col-span-2"
-          >
-            <h3 className="mb-2 font-semibold">Sztuczna inteligencja bez tajemnic</h3>
-            <p className="text-sm text-zinc-400">AI wyjaśniona przystępnie</p>
-          </TrackedLink>
+          {books.map((book) => (
+            <Link
+              key={book.slug}
+              href={`/ksiazki/${book.slug}`}
+              className="rounded-xl border border-zinc-700 bg-zinc-900 p-6 transition-shadow hover:shadow-md"
+            >
+              <h3 className="mb-2 font-semibold">{book.title}</h3>
+              <p className="mb-3 text-sm text-zinc-400">{book.subtitle}</p>
+              <span className="text-sm font-medium text-blue-400">
+                Wybierz opcje &rarr;
+              </span>
+            </Link>
+          ))}
         </div>
       </section>
 
