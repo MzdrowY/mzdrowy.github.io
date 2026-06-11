@@ -45,7 +45,7 @@ export default function Home() {
               <h3 className="mb-2 font-semibold">{p.title}</h3>
               <p className="mb-3 text-sm text-zinc-400">{p.subtitle}</p>
               <span className="text-sm font-medium text-blue-400">
-                Zobacz dostępne programy &rarr;
+                Zobacz szczegóły &rarr;
               </span>
             </Link>
           ))}
