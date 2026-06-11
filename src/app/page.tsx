@@ -1,13 +1,6 @@
 import Link from "next/link";
 import { books } from "@/lib/books";
-
-const programs = [
-  {
-    title: "Anti-Spaghetti Notatnik",
-    subtitle: "Podręczny notatnik-składnica z ochroną PIN",
-    slug: "anti-spaghetti",
-  },
-];
+import { programs } from "@/lib/programs";
 
 export default function Home() {
   return (
@@ -46,7 +39,7 @@ export default function Home() {
           {programs.map((p) => (
             <Link
               key={p.slug}
-              href="/programy"
+              href={`/programy/${p.slug}`}
               className="rounded-xl border border-zinc-700 bg-zinc-900 p-6 transition-shadow hover:shadow-md"
             >
               <h3 className="mb-2 font-semibold">{p.title}</h3>
