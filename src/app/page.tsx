@@ -9,12 +9,12 @@ export default function Home() {
           Witaj na mojej stronie
         </h1>
         <p className="text-lg leading-relaxed text-zinc-400">
-          Znajdziesz tutaj moje książki oraz programy, które stworzyłem.
+          Znajdziesz tutaj moje ebooki oraz programy, które stworzyłem.
         </p>
       </section>
 
       <section className="mb-16">
-        <h2 className="mb-6 text-2xl font-semibold">Książki</h2>
+        <h2 className="mb-6 text-2xl font-semibold">Ebooki</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <TrackedLink
             href="/books/Internet, Domeny i DNS – Podręcznik edukacyjny od podstaw.pdf"

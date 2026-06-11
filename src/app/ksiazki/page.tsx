@@ -22,7 +22,7 @@ const books = [
 export default function BooksPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
-      <h1 className="mb-8 text-4xl font-bold tracking-tight">Książki</h1>
+      <h1 className="mb-8 text-4xl font-bold tracking-tight">Ebooki</h1>
       <div className="grid gap-6 sm:grid-cols-2">
         {books.map((book) => (
           <TrackedLink
@@ -39,7 +39,7 @@ export default function BooksPage() {
         ))}
         <div className="flex flex-col rounded-xl border border-dashed border-zinc-600 bg-zinc-900 p-6 sm:col-span-2">
           <h2 className="mb-2 text-xl font-semibold text-zinc-500">Więcej wkrótce</h2>
-          <p className="text-sm text-zinc-500">Kolejne książki pojawią się w przyszłości.</p>
+          <p className="text-sm text-zinc-500">Kolejne ebooki pojawią się w przyszłości.</p>
         </div>
       </div>
     </div>

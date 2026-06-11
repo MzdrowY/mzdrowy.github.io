@@ -15,14 +15,14 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "MzdrowY — książki i programy",
+    default: "MzdrowY — ebooki i programy",
     template: "%s — MzdrowY",
   },
-  description: "Strona MzdrowY — trzy książki: Internet Domeny i DNS, Pod skórą systemu, Sztuczna inteligencja bez tajemnic oraz autorskie programy.",
+  description: "Strona MzdrowY — trzy ebooki: Internet Domeny i DNS, Pod skórą systemu, Sztuczna inteligencja bez tajemnic oraz autorskie programy.",
   metadataBase: new URL("https://mzdrowy.github.io"),
   openGraph: {
-    title: "MzdrowY — książki i programy",
-    description: "Piszę, gotuję albo koduję. Trzy książki i autorskie programy.",
+    title: "MzdrowY — ebooki i programy",
+    description: "Piszę, gotuję albo koduję. Trzy ebooki i autorskie programy.",
     url: "https://mzdrowy.github.io",
     siteName: "MzdrowY",
     locale: "pl_PL",
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "MzdrowY — książki i programy",
-    description: "Piszę, gotuję albo koduję. Trzy książki i autorskie programy.",
+    title: "MzdrowY — ebooki i programy",
+    description: "Piszę, gotuję albo koduję. Trzy ebooki i autorskie programy.",
   },
   robots: {
     index: true,
