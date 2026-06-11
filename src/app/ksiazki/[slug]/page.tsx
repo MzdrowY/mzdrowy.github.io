@@ -14,6 +14,8 @@ export default async function EbookPage({ params }: { params: Promise<{ slug: st
   const book = books.find((b) => b.slug === slug);
   if (!book) notFound();
 
+  const sizeMB = (book.sizeBytes / (1024 * 1024)).toFixed(1);
+
   return (
     <div className="mx-auto max-w-2xl px-4 py-16">
       <Link href="/ksiazki" className="mb-8 inline-block text-sm text-zinc-400 hover:text-zinc-300 transition-colors">
@@ -21,7 +23,8 @@ export default async function EbookPage({ params }: { params: Promise<{ slug: st
       </Link>
 
       <h1 className="mb-2 text-4xl font-bold tracking-tight">{book.title}</h1>
-      <p className="mb-10 text-lg text-zinc-400">{book.subtitle}</p>
+      <p className="mb-2 text-lg text-zinc-400">{book.subtitle}</p>
+      <p className="mb-10 text-sm text-zinc-500">{book.pages} strony &middot; {sizeMB} MB</p>
 
       <div className="flex flex-col gap-4 sm:flex-row">
         <TrackedLink
