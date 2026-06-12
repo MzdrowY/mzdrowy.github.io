@@ -30,11 +30,11 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
       <p className="mb-8 text-sm leading-relaxed text-zinc-300">{program.description}</p>
 
       {screenshots[program.slug] && (
-        <div className="mb-8 rounded-xl border border-zinc-700 bg-zinc-900 p-2 shadow-lg shadow-black/30">
+        <div className="mb-8">
           <img
             src={screenshots[program.slug]}
             alt={`Zrzut ekranu: ${program.title}`}
-            className="block w-full rounded-lg"
+            className="w-full rounded-xl"
           />
         </div>
       )}
