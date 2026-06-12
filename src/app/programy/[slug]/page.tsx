@@ -2,6 +2,10 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { programs } from "@/lib/programs";
 
+const screenshots: Record<string, string> = {
+  "anti-spaghetti": "/programs/anti-spaghetti-screenshot.png",
+};
+
 export const dynamic = "force-static";
 
 export function generateStaticParams() {
@@ -24,6 +28,16 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
       <h1 className="mb-1 text-3xl font-bold tracking-tight">{program.title}</h1>
       <p className="mb-2 text-sm text-zinc-500">{program.version} &middot; {program.tech} &middot; {program.license}</p>
       <p className="mb-8 text-sm leading-relaxed text-zinc-300">{program.description}</p>
+
+      {screenshots[program.slug] && (
+        <div className="mb-8">
+          <img
+            src={screenshots[program.slug]}
+            alt={`Zrzut ekranu: ${program.title}`}
+            className="w-full rounded-xl border border-zinc-700"
+          />
+        </div>
+      )}
 
       <div className="mb-8 flex flex-col gap-3 sm:flex-row">
         <a
