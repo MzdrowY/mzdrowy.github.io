@@ -37,4 +37,25 @@ export const programs: Program[] = [
     installerSize: 31261562,
     repo: "https://github.com/MzdrowY/anti-spaghetti",
   },
+  {
+    slug: "monogram-studio",
+    title: "Monogram Studio",
+    subtitle: "Proste, eleganckie narzędzie do projektowania monogramów i sygnatur",
+    description:
+      "Monogram Studio to narzędzie do projektowania spersonalizowanych znaków graficznych złożonych z dwóch liter (inicjałów). Wybierasz dwie litery, czcionkę, kolor i kształt ramki. Możesz dodać datę lub dodatkowy napis. Wszystko ustawiasz wizualnie — przesuwasz, powiększasz, centrujesz. Gotowy projekt pobierasz jako plik SVG — wektorowy obrazek, który zachowuje jakość w każdym rozmiarze.",
+    version: "1.0.0",
+    tech: "React/Vite",
+    license: "MIT",
+    features: [
+      "Plik SVG do pobrania (skalowalny, przezroczyste tło)",
+      "Możliwość skopiowania kodu źródłowego SVG",
+      "4 gotowe szablony startowe",
+      "12 różnych czcionek",
+      "5 układów liter i 5 rodzajów ramek",
+      "Ustawienia kolorów i precyzyjne pozycjonowanie",
+    ],
+    installer: "/programs/Monogram Studio-1.0.0-setup.exe",
+    installerSize: 113108680,
+    repo: "",
+  },
 ];

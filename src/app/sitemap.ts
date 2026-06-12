@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { programs } from "@/lib/programs";
 
 export const dynamic = "force-static";
 
@@ -15,5 +16,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     })),
     { url: `${base}/programy`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
+    ...programs.map((p) => ({
+      url: `${base}/programy/${p.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })),
   ];
 }

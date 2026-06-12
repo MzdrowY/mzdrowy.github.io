@@ -4,6 +4,7 @@ import { programs } from "@/lib/programs";
 
 const screenshots: Record<string, string> = {
   "anti-spaghetti": "/programs/anti-spaghetti-screenshot.png",
+  "monogram-studio": "/programs/monogram-studio-screenshot.png",
 };
 
 export const dynamic = "force-static";
@@ -48,14 +49,16 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
           Pobierz instalator
         </a>
         <span className="inline-flex items-center text-sm text-zinc-500">{sizeMB} MB &middot; .exe</span>
-        <a
-          href={program.repo}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 rounded-xl border border-zinc-600 px-6 py-3 text-sm font-medium text-zinc-300 transition-colors hover:bg-zinc-800"
-        >
-          GitHub &rarr;
-        </a>
+        {program.repo && (
+          <a
+            href={program.repo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-zinc-600 px-6 py-3 text-sm font-medium text-zinc-300 transition-colors hover:bg-zinc-800"
+          >
+            GitHub &rarr;
+          </a>
+        )}
       </div>
 
       <h2 className="mb-3 text-lg font-semibold">Funkcje</h2>
