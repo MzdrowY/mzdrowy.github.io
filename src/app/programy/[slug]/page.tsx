@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { programs } from "@/lib/programs";
+import { ImageViewer } from "@/components/image-viewer";
 
 const screenshots: Record<string, string> = {
   "anti-spaghetti": "/programs/anti-spaghetti-screenshot.png",
@@ -31,13 +32,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
       <p className="mb-8 text-sm leading-relaxed text-zinc-300">{program.description}</p>
 
       {screenshots[program.slug] && (
-        <div className="mb-8">
-          <img
-            src={screenshots[program.slug]}
-            alt={`Zrzut ekranu: ${program.title}`}
-            className="w-full rounded-xl"
-          />
-        </div>
+        <ImageViewer src={screenshots[program.slug]} alt={`Zrzut ekranu: ${program.title}`} />
       )}
 
       <div className="mb-8 flex flex-col gap-3 sm:flex-row">
