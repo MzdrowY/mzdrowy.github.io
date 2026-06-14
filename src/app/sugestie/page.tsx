@@ -2,15 +2,22 @@
 
 import { useState } from "react";
 
-const categories = ["Ebook", "Program", "Strona", "Inne"];
+const categories = ["Błąd w ebooku", "Błąd w programie", "Sugestia", "Inne"];
 
 const items = [
-  { cat: "Ebook", name: "Internet, Domeny i DNS" },
-  { cat: "Ebook", name: "Pod skórą systemu" },
-  { cat: "Ebook", name: "Sztuczna inteligencja bez tajemnic" },
-  { cat: "Program", name: "Anti-Spaghetti Notatnik" },
-  { cat: "Program", name: "Monogram Studio" },
+  { group: "ebook", name: "Internet, Domeny i DNS" },
+  { group: "ebook", name: "Pod skórą systemu" },
+  { group: "ebook", name: "Sztuczna inteligencja bez tajemnic" },
+  { group: "program", name: "Anti-Spaghetti Notatnik" },
+  { group: "program", name: "Monogram Studio" },
 ];
+
+const categoryGroup: Record<string, string> = {
+  "Błąd w ebooku": "ebook",
+  "Błąd w programie": "program",
+  "Sugestia": "",
+  "Inne": "",
+};
 
 export default function SugestiePage() {
   const [category, setCategory] = useState("");
@@ -20,13 +27,15 @@ export default function SugestiePage() {
   const [message, setMessage] = useState("");
   const [sent, setSent] = useState(false);
 
-  const filtered = category ? items.filter((i) => i.cat === category) : items;
+  const group = category ? categoryGroup[category] : "";
+  const filtered = group ? items.filter((i) => i.group === group) : items;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Sugestia: ${category} — ${item || "(brak)"}`);
+    const prefix = category.startsWith("Błąd") ? "Błąd" : "Sugestia";
+    const subject = encodeURIComponent(`${prefix}: ${item || category}`);
     const body = encodeURIComponent(
-      `Kategoria: ${category}\nDotyczy: ${item || "(brak)"}\nKontakt: ${optional || "(brak)"}\nImię: ${name || "(brak)"}\n\nWiadomość:\n${message}`
+      `Kategoria: ${category}\nDotyczy: ${item || "(brak)"}\nKontakt: ${optional || "(brak)"}\nImię: ${name || "(brak)"}\n\nOpis:\n${message}`
     );
     window.location.href = `mailto:mzdrowy@gmail.com?subject=${subject}&body=${body}`;
     setSent(true);
@@ -34,9 +43,9 @@ export default function SugestiePage() {
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-16">
-      <h1 className="mb-2 text-4xl font-bold tracking-tight">Sugestie i uwagi</h1>
+      <h1 className="mb-2 text-4xl font-bold tracking-tight">Zgłoś błąd</h1>
       <p className="mb-10 text-sm text-zinc-400">
-        Masz pomysł na zmianę w ebooku? Brakuje Ci jakiegoś programu? Napisz — czytam każdą wiadomość.
+        Znalazłeś błąd w ebooku lub programie? Masz pomysł na usprawnienie? Napisz — czytam każdą wiadomość.
       </p>
 
       {sent ? (
@@ -80,7 +89,7 @@ export default function SugestiePage() {
               type="text"
               value={optional}
               onChange={(e) => setOptional(e.target.value)}
-              placeholder="np. adres email"
+              placeholder="np. adres email (jeśli chcesz odpowiedzi)"
               className="w-full rounded-xl border border-zinc-600 bg-zinc-800 px-4 py-3 text-sm text-zinc-100 outline-none placeholder-zinc-500 focus:border-zinc-500"
             />
           </div>
@@ -97,13 +106,13 @@ export default function SugestiePage() {
           </div>
 
           <div>
-            <label className="mb-1 block text-sm text-zinc-400">Wiadomość</label>
+            <label className="mb-1 block text-sm text-zinc-400">Opisz</label>
             <textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               required
               rows={5}
-              placeholder="Opisz co chciałbyś zmienić, dodać lub zgłosić..."
+              placeholder="Co znalazłeś? Gdzie? Jak to odtworzyć?..."
               className="w-full resize-none rounded-xl border border-zinc-600 bg-zinc-800 px-4 py-3 text-sm text-zinc-100 outline-none placeholder-zinc-500 focus:border-zinc-500"
             />
           </div>
@@ -112,7 +121,7 @@ export default function SugestiePage() {
             type="submit"
             className="w-full rounded-xl bg-blue-600 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-500"
           >
-            Wyślij sugestię
+            Wyślij zgłoszenie
           </button>
         </form>
       )}
@@ -123,14 +132,20 @@ export default function SugestiePage() {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-zinc-700 bg-zinc-900">
-                <th className="px-4 py-3 text-left font-medium text-zinc-400">Kategoria</th>
+                <th className="px-4 py-3 text-left font-medium text-zinc-400">Typ</th>
                 <th className="px-4 py-3 text-left font-medium text-zinc-400">Nazwa</th>
               </tr>
             </thead>
             <tbody>
-              {items.map((i) => (
+              {[
+                { type: "Ebook", name: "Internet, Domeny i DNS" },
+                { type: "Ebook", name: "Pod skórą systemu" },
+                { type: "Ebook", name: "Sztuczna inteligencja bez tajemnic" },
+                { type: "Program", name: "Anti-Spaghetti Notatnik" },
+                { type: "Program", name: "Monogram Studio" },
+              ].map((i) => (
                 <tr key={i.name} className="border-b border-zinc-800 last:border-0">
-                  <td className="px-4 py-3 text-zinc-500">{i.cat}</td>
+                  <td className="px-4 py-3 text-zinc-500">{i.type}</td>
                   <td className="px-4 py-3 text-zinc-300">{i.name}</td>
                 </tr>
               ))}
