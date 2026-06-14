@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-const HASH = "1f53082f2d9dd9265ba109acd7b263f07ea3bbac1edea6b3671377ea4dace249";
+const HASH = "20e4416e0a5b41249ef04ac14e18fbf96c06db70c8478ef211980adbf2fefbf0";
 async function hashPass(pw: string) {
   const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(pw));
   return Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, "0")).join("");
