@@ -19,11 +19,11 @@ export const metadata: Metadata = {
     default: "MzdrowY — ebooki i programy",
     template: "%s — MzdrowY",
   },
-  description: "Strona MzdrowY — trzy ebooki: Internet Domeny i DNS, Pod skórą systemu, Sztuczna inteligencja bez tajemnic oraz autorskie programy.",
+  description: "Piszę o technologii tak, żeby miało to sens — bez żargonu, bez skrótów myślowych. Darmowe ebooki o internecie, terminalu i AI oraz autorskie narzędzia.",
   metadataBase: new URL("https://mzdrowy.github.io"),
   openGraph: {
     title: "MzdrowY — ebooki i programy",
-    description: "Piszę, gotuję albo koduję. Trzy ebooki i autorskie programy.",
+    description: "Piszę o technologii tak, żeby miało to sens — bez żargonu, bez skrótów myślowych. Darmowe ebooki o internecie, terminalu i AI oraz autorskie narzędzia.",
     url: "https://mzdrowy.github.io",
     siteName: "MzdrowY",
     locale: "pl_PL",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "MzdrowY — ebooki i programy",
-    description: "Piszę, gotuję albo koduję. Trzy ebooki i autorskie programy.",
+    description: "Piszę o technologii tak, żeby miało to sens — bez żargonu, bez skrótów myślowych. Darmowe ebooki o internecie, terminalu i AI oraz autorskie narzędzia.",
     images: ["/og-image.png"],
   },
   robots: {

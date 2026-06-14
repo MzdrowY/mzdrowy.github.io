@@ -10,7 +10,7 @@ export default function Home() {
           Witaj na mojej stronie
         </h1>
         <p className="text-lg leading-relaxed text-zinc-400">
-          Znajdziesz tutaj moje ebooki oraz programy, które stworzyłem.
+          Piszę o technologii tak, żeby miało to sens — bez żargonu, bez skrótów myślowych. Znajdziesz tu darmowe ebooki o internecie, terminalu i AI, oraz narzędzia, które zrobiłem, bo sam ich potrzebowałem.
         </p>
       </section>
 
