@@ -66,7 +66,7 @@ export default function RootLayout({
         <VisitTracker />
         <main className="flex-1">{children}</main>
         <footer className="border-t border-zinc-800 py-6 text-center text-sm text-zinc-400">
-          <p>&copy; {new Date().getFullYear()} Moja Strona</p>
+          <p>&copy; {new Date().getFullYear()} MzdrowY</p>
           <p className="mt-1"><a href="mailto:mzdrowy@gmail.com" className="hover:text-zinc-300 transition-colors">mzdrowy@gmail.com</a></p>
           <p className="mt-2"><a href="/admin" className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">Panel</a></p>
         </footer>
