@@ -4,6 +4,7 @@ const links = [
   { href: "/", label: "Strona główna" },
   { href: "/ksiazki", label: "Ebooki" },
   { href: "/programy", label: "Programy" },
+  { href: "/sugestie", label: "Sugestie" },
 ];
 
 function GitHubIcon() {
