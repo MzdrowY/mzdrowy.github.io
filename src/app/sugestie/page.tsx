@@ -20,7 +20,7 @@ export default function SugestiePage() {
   const [message, setMessage] = useState("");
   const [sent, setSent] = useState(false);
 
-  const filtered = items.filter((i) => i.cat === category);
+  const filtered = category ? items.filter((i) => i.cat === category) : items;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
