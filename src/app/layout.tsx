@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/nav";
+import { VisitTracker } from "@/components/visit-tracker";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -62,6 +63,7 @@ export default function RootLayout({
     <html lang="pl" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
       <body className="min-h-dvh flex flex-col bg-zinc-950 text-zinc-100 font-sans">
         <Nav />
+        <VisitTracker />
         <main className="flex-1">{children}</main>
         <footer className="border-t border-zinc-800 py-6 text-center text-sm text-zinc-400">
           <p>&copy; {new Date().getFullYear()} Moja Strona</p>

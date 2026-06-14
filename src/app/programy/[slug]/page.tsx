@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { programs } from "@/lib/programs";
 import { ImageViewer } from "@/components/image-viewer";
+import { TrackedDownload } from "@/components/tracked-download";
 
 const screenshots: Record<string, string> = {
   "anti-spaghetti": "/programs/anti-spaghetti-screenshot.png",
@@ -36,13 +37,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
       )}
 
       <div className="mb-8 flex flex-col gap-3 sm:flex-row">
-        <a
-          href={program.installer}
-          download
-          className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-500"
-        >
-          Pobierz instalator
-        </a>
+        <TrackedDownload href={program.installer} label="Pobierz instalator" slug={program.slug} />
         <span className="inline-flex items-center text-sm text-zinc-500">{sizeMB} MB &middot; .exe</span>
         {program.repo && (
           <a

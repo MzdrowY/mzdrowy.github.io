@@ -8,12 +8,6 @@ async function hashPass(pw: string) {
   return Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
-const books = [
-  "Internet, Domeny i DNS",
-  "Pod skórą systemu",
-  "Sztuczna inteligencja bez tajemnic",
-];
-
 async function getCount(key: string): Promise<number> {
   try {
     const res = await fetch(`https://api.countapi.xyz/get/mzdrowy/${key}`);
@@ -23,6 +17,14 @@ async function getCount(key: string): Promise<number> {
     return 0;
   }
 }
+
+const books = [
+  "Internet, Domeny i DNS",
+  "Pod skórą systemu",
+  "Sztuczna inteligencja bez tajemnic",
+];
+
+const programSlugs = ["anti-spaghetti", "monogram-studio"];
 
 export default function AdminPage() {
   const [authed, setAuthed] = useState(false);
@@ -34,11 +36,17 @@ export default function AdminPage() {
   useEffect(() => {
     if (!authed) return;
     Promise.all([
+      getCount("page-views"),
       getCount("total"),
       ...books.map((b) => getCount(b)),
-    ]).then(([total, ...rest]) => {
-      const map: Record<string, number> = { "Wszystkie odwiedziny": total };
-      books.forEach((b, i) => (map[b] = rest[i]));
+      ...programSlugs.map((s) => getCount(`program-download-${s}`)),
+    ]).then(([views, total, ...rest]) => {
+      const map: Record<string, number> = { "Odwiedziny strony": views, "Wszystkie pobrania": total };
+      books.forEach((b, i) => (map[`📖 ${b}`] = rest[i]));
+      programSlugs.forEach((s, i) => {
+        const name = s === "anti-spaghetti" ? "Anti-Spaghetti Notatnik" : "Monogram Studio";
+        map[`📦 ${name}`] = rest[books.length + i];
+      });
       setCounts(map);
       setLoading(false);
     });
@@ -98,7 +106,7 @@ export default function AdminPage() {
       )}
 
       <p className="mt-8 text-sm text-zinc-400">
-        Liczniki aktualizują się po każdym pobraniu pliku PDF.
+        Liczniki aktualizują się przy każdym wejściu na stronę, pobraniu PDF lub instalatora.
       </p>
     </div>
   );
