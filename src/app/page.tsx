@@ -20,7 +20,7 @@ export default function Home() {
       <section className="mb-16">
         <div className="mb-6 flex items-baseline gap-3">
           <h2 className="text-2xl font-semibold">Ebooki</h2>
-          <span className="text-xs text-green-500">darmowe</span>
+          <span className="text-green-500">darmowe</span>
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           {books.map((book) => (
@@ -40,7 +40,10 @@ export default function Home() {
       </section>
 
       <section>
-        <h2 className="mb-6 text-2xl font-semibold">Programy</h2>
+        <div className="mb-6 flex items-baseline gap-3">
+          <h2 className="text-2xl font-semibold">Programy</h2>
+          <span className="text-green-500">darmowe</span>
+        </div>
         <div className="grid gap-4 sm:grid-cols-2">
           {programs.map((p) => (
             <Link
