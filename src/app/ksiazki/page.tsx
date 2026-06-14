@@ -15,7 +15,7 @@ export default function BooksPage() {
             <h2 className="mb-2 text-xl font-semibold">{book.title}</h2>
             <p className="mb-4 flex-1 text-sm text-zinc-400">{book.subtitle}</p>
             <span className="text-sm font-medium text-blue-400">
-              Wybierz opcje &rarr;
+              Sprawdź ebooka &rarr;
             </span>
           </Link>
         ))}

@@ -26,7 +26,7 @@ export default function Home() {
               <h3 className="mb-2 font-semibold">{book.title}</h3>
               <p className="mb-3 text-sm text-zinc-400">{book.subtitle}</p>
               <span className="text-sm font-medium text-blue-400">
-                Wybierz opcje &rarr;
+                Sprawdź ebooka &rarr;
               </span>
             </Link>
           ))}
