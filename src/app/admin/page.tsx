@@ -8,20 +8,22 @@ async function hashPass(pw: string) {
   return Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
+const BASE = "https://countapi.mileshilliard.com/api/v1";
+
 async function getCount(key: string): Promise<number> {
   try {
-    const res = await fetch(`https://api.countapi.xyz/get/mzdrowy/${key}`);
+    const res = await fetch(`${BASE}/get/${key}`);
     const data = await res.json();
-    return data.value ?? 0;
+    return data.value ? parseInt(data.value, 10) : 0;
   } catch {
     return 0;
   }
 }
 
 const books = [
-  "Internet, Domeny i DNS",
-  "Pod skórą systemu",
-  "Sztuczna inteligencja bez tajemnic",
+  "internet-domeny-dns",
+  "pod-skora-systemu",
+  "sztuczna-inteligencja",
 ];
 
 const programSlugs = ["anti-spaghetti", "monogram-studio"];
@@ -36,13 +38,19 @@ export default function AdminPage() {
   useEffect(() => {
     if (!authed) return;
     Promise.all([
-      getCount("page-views"),
-      getCount("total"),
-      ...books.map((b) => getCount(b)),
-      ...programSlugs.map((s) => getCount(`program-download-${s}`)),
+      getCount("mzdrowy-page-views"),
+      getCount("mzdrowy-total-downloads"),
+      ...books.map((b) => getCount(`mzdrowy-ebook-${b}`)),
+      ...programSlugs.map((s) => getCount(`mzdrowy-program-${s}`)),
     ]).then(([views, total, ...rest]) => {
       const map: Record<string, number> = { "Odwiedziny strony": views, "Wszystkie pobrania": total };
-      books.forEach((b, i) => (map[`📖 ${b}`] = rest[i]));
+      books.forEach((b, i) => {
+        const name =
+          b === "internet-domeny-dns" ? "Internet, Domeny i DNS" :
+          b === "pod-skora-systemu" ? "Pod skórą systemu" :
+          "Sztuczna inteligencja bez tajemnic";
+        map[`📖 ${name}`] = rest[i];
+      });
       programSlugs.forEach((s, i) => {
         const name = s === "anti-spaghetti" ? "Anti-Spaghetti Notatnik" : "Monogram Studio";
         map[`📦 ${name}`] = rest[books.length + i];

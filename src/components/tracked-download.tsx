@@ -2,7 +2,8 @@
 
 export function TrackedDownload({ href, label, slug }: { href: string; label: string; slug: string }) {
   const handleClick = () => {
-    fetch(`https://api.countapi.xyz/hit/mzdrowy/program-download-${slug}`).catch(() => {});
+    fetch(`https://countapi.mileshilliard.com/api/v1/hit/mzdrowy-program-${slug}`).catch(() => {});
+    fetch(`https://countapi.mileshilliard.com/api/v1/hit/mzdrowy-total-downloads`).catch(() => {});
   };
 
   return (
