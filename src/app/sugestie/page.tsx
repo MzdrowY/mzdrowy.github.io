@@ -30,15 +30,27 @@ export default function SugestiePage() {
   const group = category ? categoryGroup[category] : "";
   const filtered = group ? items.filter((i) => i.group === group) : items;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const prefix = category.startsWith("Błąd") ? "Błąd" : "Sugestia";
-    const subject = encodeURIComponent(`${prefix}: ${item || category}`);
-    const body = encodeURIComponent(
-      `Kategoria: ${category}\nDotyczy: ${item || "(brak)"}\nKontakt: ${optional || "(brak)"}\nImię: ${name || "(brak)"}\n\nOpis:\n${message}`
-    );
-    window.location.href = `mailto:mzdrowy@gmail.com?subject=${subject}&body=${body}`;
-    setSent(true);
+    const formData = new FormData();
+    formData.append("_subject", `${prefix}: ${item || category}`);
+    formData.append("Kategoria", category);
+    formData.append("Dotyczy", item || "(brak)");
+    formData.append("Kontakt", optional || "(brak)");
+    formData.append("Imię", name || "(brak)");
+    formData.append("Wiadomość", message);
+    formData.append("_captcha", "false");
+
+    try {
+      await fetch("https://formsubmit.co/ajax/mzdrowy@gmail.com", {
+        method: "POST",
+        body: formData,
+      });
+      setSent(true);
+    } catch {
+      alert("Nie udało się wysłać. Spróbuj ponownie.");
+    }
   };
 
   return (
@@ -50,7 +62,7 @@ export default function SugestiePage() {
 
       {sent ? (
         <p className="rounded-xl border border-green-700 bg-green-900/30 p-6 text-sm text-green-400">
-          Dziękuję! Wiadomość została otwarta w Twoim kliencie poczty — wystarczy wysłać.
+          Dziękuję! Wiadomość została wysłana.
         </p>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-5">
