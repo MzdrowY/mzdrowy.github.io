@@ -46,7 +46,7 @@ export default async function EbookPage({ params }: { params: Promise<{ slug: st
 
       <h1 className="mb-2 text-4xl font-bold tracking-tight">{book.title}</h1>
       <p className="mb-2 text-lg text-zinc-400">{book.subtitle}</p>
-      <p className="mb-2 text-sm text-zinc-500">{book.pages} strony &middot; {sizeMB} MB</p>
+      <p className="mb-2 text-sm text-zinc-500">{book.pages} strony &middot; {sizeMB} MB &middot; <span className="text-green-500">darmowy</span></p>
       <p className="mb-10 text-sm text-zinc-300 leading-relaxed">{book.description}</p>
 
       <div className="flex flex-col gap-4 sm:flex-row">

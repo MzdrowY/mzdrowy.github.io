@@ -4,7 +4,8 @@ import { books } from "@/lib/books";
 export default function BooksPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
-      <h1 className="mb-8 text-4xl font-bold tracking-tight">Ebooki</h1>
+      <h1 className="mb-2 text-4xl font-bold tracking-tight">Ebooki</h1>
+      <p className="mb-8 text-sm text-zinc-500">Wszystkie ebooki są <strong>całkowicie darmowe</strong> — czytaj online albo pobierz PDF.</p>
       <div className="grid gap-6 sm:grid-cols-2">
         {books.map((book) => (
           <Link
