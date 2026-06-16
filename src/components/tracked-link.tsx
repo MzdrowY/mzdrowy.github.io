@@ -6,6 +6,7 @@ const names: Record<string, string> = {
   "/books/Internet, Domeny i DNS – Podręcznik edukacyjny od podstaw.pdf": "internet-domeny-dns",
   "/books/Pod skórą systemu.pdf": "pod-skora-systemu",
   "/books/Sztuczna inteligencja bez tajemnic.pdf": "sztuczna-inteligencja",
+  "/books/Mam stronę i co dalej.pdf": "mam-strone-i-co-dalej",
 };
 
 export function TrackedLink({ href, children, className, download }: { href: string; children: ReactNode; className?: string; download?: boolean }) {

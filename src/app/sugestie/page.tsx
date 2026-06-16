@@ -8,6 +8,7 @@ const items = [
   { group: "ebook", name: "Internet, Domeny i DNS" },
   { group: "ebook", name: "Pod skórą systemu" },
   { group: "ebook", name: "Sztuczna inteligencja bez tajemnic" },
+  { group: "ebook", name: "Mam stronę i co dalej" },
   { group: "program", name: "Anti-Spaghetti Notatnik" },
   { group: "program", name: "Monogram Studio" },
 ];
@@ -153,6 +154,7 @@ export default function SugestiePage() {
                 { type: "Ebook", name: "Internet, Domeny i DNS" },
                 { type: "Ebook", name: "Pod skórą systemu" },
                 { type: "Ebook", name: "Sztuczna inteligencja bez tajemnic" },
+                { type: "Ebook", name: "Mam stronę i co dalej" },
                 { type: "Program", name: "Anti-Spaghetti Notatnik" },
                 { type: "Program", name: "Monogram Studio" },
               ].map((i) => (

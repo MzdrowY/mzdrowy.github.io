@@ -39,4 +39,14 @@ export const books: Book[] = [
     description:
       "Kompleksowy poradnik, który w klarowny sposób wyjaśnia świat współczesnej sztucznej inteligencji – od jej historycznych początków po najnowsze modele językowe (LLM). Książka rozplątuje zawiłą terminologię (AI, ML, DL) i uczy, jak skutecznie rozmawiać z modelami takimi jak ChatGPT czy Claude za pomocą technik prompt engineeringu. Unikalną cechą podręcznika jest instrukcja uruchamiania lokalnych modeli AI na własnym komputerze przy użyciu narzędzi takich jak Ollama czy LM Studio, co pozwala na korzystanie z technologii bez internetu i z pełną prywatnością danych. To obowiązkowa lektura dla każdego, kto chce świadomie korzystać z rewolucji AI.",
   },
+  {
+    slug: "mam-strone-i-co-dalej",
+    title: "Mam stronę i co dalej",
+    subtitle: "Praktyczny poradnik dla właścicieli stron internetowych",
+    file: "/books/Mam stronę i co dalej.pdf",
+    pages: 56,
+    sizeBytes: 1614211,
+    description:
+      "Praktyczny poradnik dla właścicieli stron internetowych, którzy nie wiedzą od czego zacząć promocję w sieci. Książka prowadzi krok po kroku przez SEO, Google Search Console, social media, content marketing, email marketing i analitykę — bez zbędnej teorii i z planem na pierwsze 90 dni. 56 stron konkretnych instrukcji i narzędzi, które pozwolą Ci zrozumieć jak działa promocja w internecie i zrobić ją samodzielnie.",
+  },
 ]

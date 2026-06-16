@@ -24,6 +24,7 @@ const books = [
   "internet-domeny-dns",
   "pod-skora-systemu",
   "sztuczna-inteligencja",
+  "mam-strone-i-co-dalej",
 ];
 
 const programSlugs = ["anti-spaghetti", "monogram-studio"];
@@ -48,6 +49,7 @@ export default function AdminPage() {
         const name =
           b === "internet-domeny-dns" ? "Internet, Domeny i DNS" :
           b === "pod-skora-systemu" ? "Pod skórą systemu" :
+          b === "mam-strone-i-co-dalej" ? "Mam stronę i co dalej" :
           "Sztuczna inteligencja bez tajemnic";
         map[`📖 ${name}`] = rest[i];
       });
