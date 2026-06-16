@@ -1,5 +1,15 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { books } from "@/lib/books";
+
+export const metadata: Metadata = {
+  title: "Ebooki",
+  description: "Darmowe ebooki o internecie, terminalu, AI i promocji stron — do czytania online lub pobrania za darmo, bez rejestracji.",
+  openGraph: {
+    title: "Ebooki — MzdrowY",
+    description: "Darmowe ebooki o internecie, terminalu, AI i promocji stron — do czytania online lub pobrania.",
+  },
+};
 
 export default function BooksPage() {
   return (

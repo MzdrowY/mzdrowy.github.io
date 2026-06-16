@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { programs } from "@/lib/programs";
 import { ImageViewer } from "@/components/image-viewer";
 import { TrackedDownload } from "@/components/tracked-download";
@@ -10,6 +11,23 @@ const screenshots: Record<string, string> = {
 };
 
 export const dynamic = "force-static";
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const program = programs.find((p) => p.slug === slug);
+  if (!program) return {};
+  const url = `https://mzdrowy.github.io/programy/${slug}`;
+  return {
+    title: program.title,
+    description: program.description,
+    alternates: { canonical: url },
+    openGraph: {
+      url,
+      title: `${program.title} — MzdrowY`,
+      description: program.description,
+    },
+  };
+}
 
 export function generateStaticParams() {
   return programs.map((p) => ({ slug: p.slug }));

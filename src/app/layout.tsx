@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   },
   description: "Piszę o technologii tak, żeby miało to sens — bez żargonu, bez skrótów myślowych. Darmowe ebooki o internecie, terminalu i AI oraz autorskie narzędzia.",
   metadataBase: new URL("https://mzdrowy.github.io"),
+  alternates: {
+    canonical: "https://mzdrowy.github.io",
+  },
   openGraph: {
     title: "MzdrowY — ebooki i programy",
     description: "Piszę o technologii tak, żeby miało to sens — bez żargonu, bez skrótów myślowych. Darmowe ebooki o internecie, terminalu i AI oraz autorskie narzędzia.",
@@ -62,6 +65,26 @@ export default function RootLayout({
   return (
     <html lang="pl" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
       <body className="min-h-dvh flex flex-col bg-zinc-950 text-zinc-100 font-sans">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "WebSite",
+                  name: "MzdrowY",
+                  url: "https://mzdrowy.github.io",
+                },
+                {
+                  "@type": "Person",
+                  name: "Maciej Zdrowowicz",
+                  url: "https://mzdrowy.github.io",
+                },
+              ],
+            }),
+          }}
+        />
         <Nav />
         <VisitTracker />
         <main className="flex-1">{children}</main>

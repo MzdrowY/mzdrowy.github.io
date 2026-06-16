@@ -1,5 +1,15 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { programs } from "@/lib/programs";
+
+export const metadata: Metadata = {
+  title: "Programy",
+  description: "Darmowe programy dla Windows — notatnik z ochroną PIN i narzędzie do projektowania monogramów. Pobierz bez rejestracji.",
+  openGraph: {
+    title: "Programy — MzdrowY",
+    description: "Darmowe programy dla Windows — notatnik z ochroną PIN i narzędzie do projektowania monogramów.",
+  },
+};
 
 export default function ProgramsPage() {
   return (
