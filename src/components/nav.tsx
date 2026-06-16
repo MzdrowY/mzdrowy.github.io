@@ -1,11 +1,7 @@
 import Link from "next/link";
+import { type Locale, t } from "@/lib/i18n";
 
-const links = [
-  { href: "/", label: "Strona główna" },
-  { href: "/ksiazki", label: "Ebooki" },
-  { href: "/programy", label: "Programy" },
-  { href: "/sugestie", label: "Zgłoś błąd" },
-];
+const locales: Locale[] = ["pl", "en"];
 
 function GitHubIcon() {
   return (
@@ -15,11 +11,21 @@ function GitHubIcon() {
   );
 }
 
-export function Nav() {
+export function Nav({ locale }: { locale: string }) {
+  const l = locale as Locale;
+  const other = locales.find((x) => x !== l) || "en";
+
+  const links = [
+    { href: `/${locale}`, label: t(l, "nav.home") },
+    { href: `/${locale}/ksiazki`, label: t(l, "nav.ebooks") },
+    { href: `/${locale}/programy`, label: t(l, "nav.programs") },
+    { href: `/${locale}/sugestie`, label: t(l, "nav.bug") },
+  ];
+
   return (
     <nav className="border-b border-zinc-800 bg-zinc-900">
       <div className="mx-auto flex max-w-3xl items-center gap-6 px-4 py-4">
-        <Link href="/" className="text-lg font-bold tracking-tight">
+        <Link href={`/${locale}`} className="text-lg font-bold tracking-tight">
           mzdrowy
         </Link>
         <div className="flex gap-4 text-sm font-medium">
@@ -33,12 +39,15 @@ export function Nav() {
             </Link>
           ))}
         </div>
-        <div className="ml-auto">
+        <div className="ml-auto flex items-center gap-4">
+          <Link href={`/${other}`} className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors uppercase tracking-wider">
+            {t(l, "nav.lang")}
+          </Link>
           <a
             href="https://github.com/MzdrowY"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Profil GitHub"
+            aria-label={t(l, "nav.github")}
           >
             <GitHubIcon />
           </a>

@@ -15,18 +15,10 @@ async function getCount(key: string): Promise<number> {
     const res = await fetch(`${BASE}/get/${key}`);
     const data = await res.json();
     return data.value ? parseInt(data.value, 10) : 0;
-  } catch {
-    return 0;
-  }
+  } catch { return 0; }
 }
 
-const books = [
-  "internet-domeny-dns",
-  "pod-skora-systemu",
-  "sztuczna-inteligencja",
-  "mam-strone-i-co-dalej",
-];
-
+const books = ["internet-domeny-dns", "pod-skora-systemu", "sztuczna-inteligencja", "mam-strone-i-co-dalej"];
 const programSlugs = ["anti-spaghetti", "monogram-studio"];
 
 export default function AdminPage() {
@@ -64,32 +56,18 @@ export default function AdminPage() {
 
   const handleLogin = async () => {
     const h = await hashPass(pw);
-    if (h === HASH) {
-      setAuthed(true);
-      setError(false);
-    } else {
-      setError(true);
-    }
+    if (h === HASH) { setAuthed(true); setError(false); } else { setError(true); }
   };
 
   if (!authed) {
     return (
       <div className="mx-auto max-w-sm px-4 py-32 text-center">
         <h1 className="mb-6 text-2xl font-bold">Panel administracyjny</h1>
-        <input
-          type="password"
-          placeholder="Hasło"
-          value={pw}
-          onChange={(e) => setPw(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && handleLogin()}
-          className="mb-4 w-full rounded-lg border border-zinc-600 bg-zinc-800 px-4 py-2 text-center text-zinc-100 outline-none focus:border-zinc-500"
-        />
-        <button
-          onClick={handleLogin}
-          className="w-full rounded-lg bg-zinc-100 px-4 py-2 text-zinc-900 transition-colors hover:bg-zinc-300"
-        >
-          Zaloguj
-        </button>
+        <input type="password" placeholder="Hasło" value={pw}
+          onChange={(e) => setPw(e.target.value)} onKeyDown={(e) => e.key === "Enter" && handleLogin()}
+          className="mb-4 w-full rounded-lg border border-zinc-600 bg-zinc-800 px-4 py-2 text-center text-zinc-100 outline-none focus:border-zinc-500" />
+        <button onClick={handleLogin}
+          className="w-full rounded-lg bg-zinc-100 px-4 py-2 text-zinc-900 transition-colors hover:bg-zinc-300">Zaloguj</button>
         {error && <p className="mt-4 text-sm text-red-500">Nieprawidłowe hasło</p>}
       </div>
     );
@@ -98,26 +76,19 @@ export default function AdminPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
       <h1 className="mb-8 text-4xl font-bold tracking-tight">Panel administracyjny</h1>
-
       {loading ? (
         <p className="text-zinc-500">Wczytywanie statystyk...</p>
       ) : (
         <div className="grid gap-4">
           {Object.entries(counts).map(([label, count]) => (
-            <div
-              key={label}
-              className="rounded-xl border border-zinc-700 bg-zinc-900 p-6"
-            >
+            <div key={label} className="rounded-xl border border-zinc-700 bg-zinc-900 p-6">
               <p className="text-sm text-zinc-400">{label}</p>
               <p className="text-3xl font-bold tracking-tight">{count}</p>
             </div>
           ))}
         </div>
       )}
-
-      <p className="mt-8 text-sm text-zinc-400">
-        Liczniki aktualizują się przy każdym wejściu na stronę, pobraniu PDF lub instalatora.
-      </p>
+      <p className="mt-8 text-sm text-zinc-400">Liczniki aktualizują się przy każdym wejściu na stronę, pobraniu PDF lub instalatora.</p>
     </div>
   );
 }
