@@ -5,6 +5,7 @@ export interface Book {
   subtitlePl: string
   subtitleEn: string
   file: string
+  fileEn?: string
   pages: number
   sizeBytes: number
   descriptionPl: string
@@ -17,6 +18,7 @@ export function bookLocale(book: Book, locale: string) {
     title: locale === "en" ? book.titleEn : book.titlePl,
     subtitle: locale === "en" ? book.subtitleEn : book.subtitlePl,
     description: locale === "en" ? book.descriptionEn : book.descriptionPl,
+    file: locale === "en" && book.fileEn ? book.fileEn : book.file,
   };
 }
 
@@ -70,6 +72,7 @@ export const books: Book[] = [
     subtitlePl: "Praktyczny poradnik dla właścicieli stron internetowych",
     subtitleEn: "A practical guide for website owners",
     file: "/books/Mam stronę i co dalej.pdf",
+    fileEn: "/books/Mam stronę i co dalej en.pdf",
     pages: 56,
     sizeBytes: 1614211,
     descriptionPl:

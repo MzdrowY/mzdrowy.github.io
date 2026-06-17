@@ -42,8 +42,8 @@ export default async function EbookPage({ params }: { params: Promise<{ locale: 
       <p className="mb-2 text-sm text-zinc-500">{book.pages} {t(l, "books.pages")} &middot; {sizeMB} MB &middot; <span className="text-green-500">{t(l, "books.free")}</span></p>
       <p className="mb-10 text-sm text-zinc-300 leading-relaxed">{book.description}</p>
       <div className="flex flex-col gap-4 sm:flex-row">
-        <TrackedLink href={raw.file} className="flex items-center justify-center rounded-xl border border-zinc-600 bg-zinc-800 px-8 py-4 text-center font-medium transition-colors hover:bg-zinc-700">{t(l, "books.read")}</TrackedLink>
-        <TrackedLink href={raw.file} download className="flex items-center justify-center rounded-xl bg-blue-600 px-8 py-4 text-center font-medium text-white transition-colors hover:bg-blue-500">{t(l, "books.download")}</TrackedLink>
+        <TrackedLink href={book.file} className="flex items-center justify-center rounded-xl border border-zinc-600 bg-zinc-800 px-8 py-4 text-center font-medium transition-colors hover:bg-zinc-700">{t(l, "books.read")}</TrackedLink>
+        <TrackedLink href={book.file} download className="flex items-center justify-center rounded-xl bg-blue-600 px-8 py-4 text-center font-medium text-white transition-colors hover:bg-blue-500">{t(l, "books.download")}</TrackedLink>
       </div>
       <p className="mt-8 text-sm text-zinc-500">{t(l, "books.pdf-note")}</p>
     </div>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { type Locale, t } from "@/lib/i18n";
+import { type Locale } from "@/lib/i18n";
 
 const locales: Locale[] = ["pl", "en"];
 
@@ -11,15 +11,36 @@ function GitHubIcon() {
   );
 }
 
+function PlFlag() {
+  return (
+    <svg viewBox="0 0 24 16" className="h-4 w-6 rounded-sm" aria-hidden="true">
+      <rect width="24" height="8" fill="#fff" />
+      <rect y="8" width="24" height="8" fill="#dc143c" />
+    </svg>
+  );
+}
+
+function EnFlag() {
+  return (
+    <svg viewBox="0 0 24 16" className="h-4 w-6 rounded-sm" aria-hidden="true">
+      <rect width="24" height="16" fill="#012169" />
+      <path d="M0 0l24 16m0-16L0 16" stroke="#fff" strokeWidth="3" />
+      <path d="M0 0l24 16m0-16L0 16" stroke="#c8102e" strokeWidth="1.5" />
+      <path d="M12 0v16M0 8h24" stroke="#fff" strokeWidth="5" />
+      <path d="M12 0v16M0 8h24" stroke="#c8102e" strokeWidth="2.5" />
+    </svg>
+  );
+}
+
 export function Nav({ locale }: { locale: string }) {
   const l = locale as Locale;
   const other = locales.find((x) => x !== l) || "en";
 
   const links = [
-    { href: `/${locale}`, label: t(l, "nav.home") },
-    { href: `/${locale}/ksiazki`, label: t(l, "nav.ebooks") },
-    { href: `/${locale}/programy`, label: t(l, "nav.programs") },
-    { href: `/${locale}/sugestie`, label: t(l, "nav.bug") },
+    { href: `/${locale}`, label: locale === "pl" ? "Strona główna" : "Home" },
+    { href: `/${locale}/ksiazki`, label: locale === "pl" ? "Ebooki" : "Ebooks" },
+    { href: `/${locale}/programy`, label: locale === "pl" ? "Programy" : "Software" },
+    { href: `/${locale}/sugestie`, label: locale === "pl" ? "Zgłoś błąd" : "Report bug" },
   ];
 
   return (
@@ -39,15 +60,16 @@ export function Nav({ locale }: { locale: string }) {
             </Link>
           ))}
         </div>
-        <div className="ml-auto flex items-center gap-4">
-          <Link href={`/${other}`} className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors uppercase tracking-wider">
-            {t(l, "nav.lang")}
+        <div className="ml-auto flex items-center gap-3">
+          <Link href={`/${other}`} className="flex items-center gap-1.5 text-sm text-zinc-500 hover:text-zinc-300 transition-colors" aria-label={other === "pl" ? "Polski" : "English"}>
+            {other === "pl" ? <PlFlag /> : <EnFlag />}
+            <span className="text-xs uppercase tracking-wider">{other}</span>
           </Link>
           <a
             href="https://github.com/MzdrowY"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={t(l, "nav.github")}
+            aria-label="GitHub"
           >
             <GitHubIcon />
           </a>
