@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { type Locale, t } from "@/lib/i18n";
 import { books, bookLocale } from "@/lib/books";
 import { TrackedLink } from "@/components/tracked-link";
+import { PlFlag, EnFlag } from "@/components/icons";
 
 export const dynamic = "force-static";
 
@@ -45,6 +46,21 @@ export default async function EbookPage({ params }: { params: Promise<{ locale: 
         <TrackedLink href={book.file} className="flex items-center justify-center rounded-xl border border-zinc-600 bg-zinc-800 px-8 py-4 text-center font-medium transition-colors hover:bg-zinc-700">{t(l, "books.read")}</TrackedLink>
         <TrackedLink href={book.file} download className="flex items-center justify-center rounded-xl bg-blue-600 px-8 py-4 text-center font-medium text-white transition-colors hover:bg-blue-500">{t(l, "books.download")}</TrackedLink>
       </div>
+      {raw.fileEn && (
+        <div className="mt-6">
+          <p className="mb-3 text-sm text-zinc-500">{t(l, "books.also-available")}:</p>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <TrackedLink href={raw.file} download className="flex items-center justify-center gap-2 rounded-xl border border-zinc-600 bg-zinc-800 px-6 py-3 text-sm font-medium transition-colors hover:bg-zinc-700">
+              <PlFlag className="h-4 w-6 rounded-sm shrink-0" />
+              {t(l, "books.download-pl")}
+            </TrackedLink>
+            <TrackedLink href={raw.fileEn} download className="flex items-center justify-center gap-2 rounded-xl border border-zinc-600 bg-zinc-800 px-6 py-3 text-sm font-medium transition-colors hover:bg-zinc-700">
+              <EnFlag className="h-4 w-6 rounded-sm shrink-0" />
+              {t(l, "books.download-en")}
+            </TrackedLink>
+          </div>
+        </div>
+      )}
       <p className="mt-8 text-sm text-zinc-500">{t(l, "books.pdf-note")}</p>
     </div>
   );

@@ -40,6 +40,9 @@ const dict: Record<Locale, Record<string, string>> = {
     "books.read": "Czytaj online",
     "books.download": "Pobierz PDF",
     "books.pdf-note": "Plik PDF otworzy się w przeglądarce. Możesz też pobrać go na swoje urządzenie.",
+    "books.download-pl": "Pobierz PDF — polski",
+    "books.download-en": "Download PDF — English",
+    "books.also-available": "Dostępne również w",
 
     "programs.title": "Programy",
     "programs.description": "Darmowe programy dla Windows — notatnik z ochroną PIN i narzędzie do projektowania monogramów. Pobierz bez rejestracji.",
@@ -121,6 +124,9 @@ const dict: Record<Locale, Record<string, string>> = {
     "books.read": "Read online",
     "books.download": "Download PDF",
     "books.pdf-note": "The PDF will open in your browser. You can also download it to your device.",
+    "books.download-pl": "Pobierz PDF — Polish",
+    "books.download-en": "Download PDF — English",
+    "books.also-available": "Also available in",
 
     "programs.title": "Software",
     "programs.description": "Free Windows software — a PIN-protected notes app and a monogram design tool. Download without registration.",
