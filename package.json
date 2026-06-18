@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "node -e \"require('fs').existsSync('out/favicon.ico') && require('fs').unlinkSync('out/favicon.ico')\"",
+    "postbuild": "node -e \"var f=require('fs');f.existsSync('out/favicon.ico')&&f.unlinkSync('out/favicon.ico');f.writeFileSync('out/.nojekyll','')\"",
     "start": "next start",
     "lint": "eslint"
   },
