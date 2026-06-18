@@ -60,7 +60,7 @@ export default async function LocaleLayout({ params, children }: Props) {
       <footer className="border-t border-zinc-800 py-6 text-center text-sm text-zinc-400">
         <p>&copy; {new Date().getFullYear()} {t(locale as Locale, "site.copyright")}</p>
         <p className="mt-1"><a href={`mailto:${t(locale as Locale, "site.email")}`} className="hover:text-zinc-300 transition-colors">{t(locale as Locale, "site.email")}</a></p>
-        <p className="mt-2"><a href={`/${locale}/admin`} className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">{t(locale as Locale, "site.admin")}</a></p>
+        <p className="mt-2"><a href={`/admin`} className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">{t(locale as Locale, "site.admin")}</a></p>
       </footer>
     </>
   );
