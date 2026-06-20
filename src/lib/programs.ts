@@ -78,4 +78,31 @@ export const programs: Program[] = [
     installerSize: 113108680,
     repo: "",
   },
+  {
+    slug: "przelew-pdf",
+    titlePl: "Polecenie Przelewu PDF",
+    titleEn: "PDF Transfer Order",
+    subtitlePl: "Wypełniaj polecenia przelewu i wpłaty gotówkowe na oryginalnym blankiecie PPWG",
+    subtitleEn: "Fill out transfer orders and cash deposits on the original PPWG form",
+    descriptionPl:
+      "Wypełniaj polecenia przelewu i wpłaty gotówkowe na oryginalnym blankiecie PPWG, bez ręcznego pisania. Wpisz dane odbiorcy, kliknij \"Generuj PDF\" i gotowe. Tekst układa się idealnie na skanie prawdziwego blankietu — wygląda jak oryginalny formularz bankowy. Dla księgowych, biur rachunkowych, firm wystawiających przelewy seryjnie i każdego, kto woli wydrukować przelew niż wypełniać długopisem. Działa w 100% offline, bez internetu.",
+    descriptionEn:
+      "Fill out transfer orders and cash deposits on the original PPWG form without handwriting. Enter recipient details, click \"Generate PDF\" and you're done. Text aligns perfectly on a scanned real form — it looks like an original bank document. For accountants, billing offices, companies issuing batch transfers, and anyone who prefers printing a transfer over filling it out by hand. Works 100% offline, no internet required.",
+    version: "2.0.0",
+    tech: "Flutter/Dart",
+    license: "MIT",
+    features: [
+      "Oryginalny blankiet PPWG w tle",
+      "Automatyczne dopasowanie czcionki (squeeze) przy długich nazwach",
+      "Historia przelewów — kliknij, żeby powtórzyć",
+      "Lista odbiorców — szybkie wypełnianie",
+      "Wpłaty gotówkowe z kwotą słownie",
+      "Kalibrator pól do własnej korekty pozycji",
+      "Motyw ciemny i jasny (biurowy)",
+      "Działa w 100% offline, bez internetu",
+    ],
+    installer: "/programs/PrzelewPDF-Setup.exe",
+    installerSize: 0,
+    repo: "https://github.com/MzdrowY/przelew-pdf-flutter",
+  },
 ];

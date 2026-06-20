@@ -19,7 +19,7 @@ async function getCount(key: string): Promise<number> {
 }
 
 const books = ["internet-domeny-dns", "pod-skora-systemu", "sztuczna-inteligencja", "mam-strone-i-co-dalej"];
-const programSlugs = ["anti-spaghetti", "monogram-studio"];
+const programSlugs = ["anti-spaghetti", "monogram-studio", "przelew-pdf"];
 
 export default function AdminPage() {
   const [authed, setAuthed] = useState(false);
@@ -46,7 +46,7 @@ export default function AdminPage() {
         map[`📖 ${name}`] = rest[i];
       });
       programSlugs.forEach((s, i) => {
-        const name = s === "anti-spaghetti" ? "Anti-Spaghetti Notatnik" : "Monogram Studio";
+        const name = s === "anti-spaghetti" ? "Anti-Spaghetti Notatnik" : s === "monogram-studio" ? "Monogram Studio" : "Polecenie Przelewu PDF";
         map[`📦 ${name}`] = rest[books.length + i];
       });
       setCounts(map);
