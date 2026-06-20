@@ -33,14 +33,14 @@ export default async function ProgramsPage({ params }: Props) {
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
-      <h1 className="mb-8 text-4xl font-bold tracking-tight">{t(l, "programs.title")}</h1>
+      <h1 className="mb-8 text-4xl font-bold tracking-tight gradient-text">{t(l, "programs.title")}</h1>
       <div className="grid gap-4 sm:grid-cols-2">
         {programs.map((p) => {
           const prog = programLocale(p, l);
           const sizeMB = (p.installerSize / (1024 * 1024)).toFixed(1);
           return (
-            <Link key={p.slug} href={`/${locale}/programy/${p.slug}`} className="rounded-xl border border-zinc-700 bg-zinc-900 p-6 transition-shadow hover:shadow-md">
-              <h2 className="mb-1 font-semibold">{prog.title}</h2>
+            <Link key={p.slug} href={`/${locale}/programy/${p.slug}`} className="glow-card rounded-xl p-6">
+              <h2 className="mb-1 font-semibold text-zinc-100">{prog.title}</h2>
               <p className="mb-1 text-xs text-zinc-500">{p.version} &middot; {sizeMB} MB &middot; {p.platform}</p>
               <p className="text-sm text-zinc-400">{prog.subtitle}</p>
             </Link>

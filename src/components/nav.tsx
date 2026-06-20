@@ -16,9 +16,9 @@ export function Nav({ locale }: { locale: string }) {
   ];
 
   return (
-    <nav className="border-b border-zinc-800 bg-zinc-900">
+    <nav className="border-b border-zinc-800 bg-black/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-3xl items-center gap-6 px-4 py-4">
-        <Link href={`/${locale}`} className="text-lg font-bold tracking-tight">
+        <Link href={`/${locale}`} className="text-lg font-bold tracking-tight gradient-text">
           mzdrowy
         </Link>
         <div className="flex gap-4 text-sm font-medium">
@@ -26,14 +26,14 @@ export function Nav({ locale }: { locale: string }) {
             <Link
               key={link.href}
               href={link.href}
-              className="text-zinc-400 transition-colors hover:text-zinc-100"
+              className="text-zinc-500 transition-colors hover:text-neon-green"
             >
               {link.label}
             </Link>
           ))}
         </div>
         <div className="ml-auto flex items-center gap-3">
-          <Link href={`/${other}`} className="flex items-center gap-1.5 text-sm text-zinc-500 hover:text-zinc-300 transition-colors" aria-label={other === "pl" ? "Polski" : "English"}>
+          <Link href={`/${other}`} className="flex items-center gap-1.5 text-sm text-zinc-500 hover:text-neon-cyan transition-colors" aria-label={other === "pl" ? "Polski" : "English"}>
             {other === "pl" ? <PlFlag /> : <EnFlag />}
             <span className="text-xs uppercase tracking-wider">{other}</span>
           </Link>

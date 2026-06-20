@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export const viewport: Viewport = {
-  themeColor: "#09090b",
+  themeColor: "#050505",
 };
 
 export default async function LocaleLayout({ params, children }: Props) {
@@ -68,7 +68,7 @@ export default async function LocaleLayout({ params, children }: Props) {
 
   return (
     <html lang={locale} className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-      <body className="min-h-dvh flex flex-col bg-zinc-950 text-zinc-100 font-sans antialiased">
+      <body className="min-h-dvh flex flex-col text-zinc-100 font-sans antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -84,10 +84,10 @@ export default async function LocaleLayout({ params, children }: Props) {
         <Nav locale={locale} />
         <VisitTracker />
         <main className="flex-1">{children}</main>
-        <footer className="border-t border-zinc-800 py-6 text-center text-sm text-zinc-400">
+        <footer className="border-t border-zinc-800/50 py-6 text-center text-sm text-zinc-500">
           <p>&copy; {new Date().getFullYear()} {t(locale as Locale, "site.copyright")}</p>
-          <p className="mt-1"><a href={`mailto:${t(locale as Locale, "site.email")}`} className="hover:text-zinc-300 transition-colors">{t(locale as Locale, "site.email")}</a></p>
-          <p className="mt-2"><a href={`/admin`} className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">{t(locale as Locale, "site.admin")}</a></p>
+          <p className="mt-1"><a href={`mailto:${t(locale as Locale, "site.email")}`} className="hover:text-neon-green transition-colors">{t(locale as Locale, "site.email")}</a></p>
+          <p className="mt-2"><a href={`/admin`} className="text-xs text-zinc-700 hover:text-neon-green transition-colors">{t(locale as Locale, "site.admin")}</a></p>
         </footer>
       </body>
     </html>
