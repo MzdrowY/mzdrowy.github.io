@@ -9,6 +9,7 @@ import { TrackedDownload } from "@/components/tracked-download";
 const screenshots: Record<string, string> = {
   "anti-spaghetti": "/programs/anti-spaghetti-screenshot.png",
   "monogram-studio": "/programs/monogram-studio-screenshot.png",
+  "przelew-pdf": "/programs/przelew-pdf-screenshot.png",
 };
 
 export const dynamic = "force-static";

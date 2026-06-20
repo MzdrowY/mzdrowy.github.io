@@ -102,7 +102,7 @@ export const programs: Program[] = [
       "Działa w 100% offline, bez internetu",
     ],
     installer: "/programs/PrzelewPDF-Setup.exe",
-    installerSize: 0,
+    installerSize: 14525171,
     repo: "https://github.com/MzdrowY/przelew-pdf-flutter",
   },
 ];
