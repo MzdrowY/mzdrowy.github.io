@@ -39,10 +39,11 @@ export default async function ProgramsPage({ params }: Props) {
           const prog = programLocale(p, l);
           const sizeMB = (p.installerSize / (1024 * 1024)).toFixed(1);
           return (
-            <Link key={p.slug} href={`/${locale}/programy/${p.slug}`} className="glow-card rounded-xl p-6">
+            <Link key={p.slug} href={`/${locale}/programy/${p.slug}`} className="glow-card rounded-xl p-6 flex flex-col">
               <h2 className="mb-1 font-semibold text-zinc-100">{prog.title}</h2>
               <p className="mb-1 text-xs text-zinc-500">{p.version} &middot; {sizeMB} MB &middot; {p.platform}</p>
-              <p className="text-sm text-zinc-400">{prog.subtitle}</p>
+              <p className="mb-3 flex-1 text-sm text-zinc-400">{prog.subtitle}</p>
+              <span className="text-sm font-medium text-neon-cyan">{t(l, "home.check-program")}</span>
             </Link>
           );
         })}
