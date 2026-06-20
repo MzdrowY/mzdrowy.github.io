@@ -49,6 +49,7 @@ const dict: Record<Locale, Record<string, string>> = {
     "programs.og-desc": "Darmowe programy dla Windows — notatnik z ochroną PIN i narzędzie do projektowania monogramów.",
     "programs.back": "← Wróć do programów",
     "programs.download": "Pobierz instalator",
+    "programs.download-win": "Pobierz dla Windows",
     "programs.features": "Funkcje",
 
     "sugestie.title": "Zgłoś błąd",
@@ -133,6 +134,7 @@ const dict: Record<Locale, Record<string, string>> = {
     "programs.og-desc": "Free Windows software — a PIN-protected notes app and a monogram design tool.",
     "programs.back": "← Back to software",
     "programs.download": "Download installer",
+    "programs.download-win": "Download for Windows",
     "programs.features": "Features",
 
     "sugestie.title": "Report a bug",

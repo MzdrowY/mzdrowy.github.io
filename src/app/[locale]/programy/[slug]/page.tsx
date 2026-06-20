@@ -48,7 +48,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ locale
       <p className="mb-8 text-sm leading-relaxed text-zinc-300">{prog.description}</p>
       {screenshots[raw.slug] && <ImageViewer src={screenshots[raw.slug]} alt={`Screenshot: ${prog.title}`} />}
       <div className="mb-8 flex flex-col gap-3 sm:flex-row">
-        <TrackedDownload href={raw.installer} label={t(l, "programs.download")} slug={raw.slug} />
+        <TrackedDownload href={raw.installer} label={t(l, "programs.download-win")} slug={raw.slug} />
         <span className="inline-flex items-center text-sm text-zinc-500">{sizeMB} MB &middot; .exe</span>
         {raw.repo && <a href={raw.repo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-xl border border-zinc-600 px-6 py-3 text-sm font-medium text-zinc-300 transition-colors hover:bg-zinc-800">GitHub &rarr;</a>}
       </div>
