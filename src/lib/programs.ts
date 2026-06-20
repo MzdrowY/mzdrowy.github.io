@@ -8,6 +8,7 @@ export interface Program {
   descriptionEn: string
   version: string
   tech: string
+  platform: string
   license: string
   features: string[]
   installer: string
@@ -37,6 +38,7 @@ export const programs: Program[] = [
       "A handy scratchpad built in Python with PyQt6. Dark, minimalist interface for quickly saving text snippets — prompts, API keys, recipes, notes. Protected with a PIN, with export to multiple formats and drag & drop.",
     version: "1.0.0",
     tech: "Python/PyQt6",
+    platform: "Windows 10/11",
     license: "MIT",
     features: [
       "Tworzenie, edycja i usuwanie notatek z automatycznym zapisem",
@@ -65,6 +67,7 @@ export const programs: Program[] = [
       "Monogram Studio is a tool for designing personalized graphic marks from two letters (initials). Pick two letters, a font, a color, and a frame shape. You can add a date or extra text. Everything is set visually — drag, scale, center. Download your finished design as an SVG file — a vector image that keeps its quality at any size.",
     version: "1.0.0",
     tech: "React/Vite",
+    platform: "Windows 10/11",
     license: "MIT",
     features: [
       "Plik SVG do pobrania (skalowalny, przezroczyste tło)",
@@ -90,6 +93,7 @@ export const programs: Program[] = [
       "Fill out transfer orders and cash deposits on the original PPWG form without handwriting. Enter recipient details, click \"Generate PDF\" and you're done. Text aligns perfectly on a scanned real form — it looks like an original bank document. For accountants, billing offices, companies issuing batch transfers, and anyone who prefers printing a transfer over filling it out by hand. Works 100% offline, no internet required.",
     version: "2.0.0",
     tech: "Flutter/Dart",
+    platform: "Windows 10/11",
     license: "MIT",
     features: [
       "Oryginalny blankiet PPWG w tle",

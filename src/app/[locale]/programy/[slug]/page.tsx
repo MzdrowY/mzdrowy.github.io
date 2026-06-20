@@ -44,7 +44,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ locale
     <div className="mx-auto max-w-2xl px-4 py-16">
       <Link href={`/${locale}/programy`} className="mb-8 inline-block text-sm text-zinc-400 hover:text-zinc-300 transition-colors">&larr; {t(l, "programs.back")}</Link>
       <h1 className="mb-1 text-3xl font-bold tracking-tight">{prog.title}</h1>
-      <p className="mb-2 text-sm text-zinc-500">{raw.version} &middot; {raw.tech} &middot; {raw.license}</p>
+      <p className="mb-2 text-sm text-zinc-500">{raw.version} &middot; {raw.tech} &middot; {raw.platform} &middot; {raw.license}</p>
       <p className="mb-8 text-sm leading-relaxed text-zinc-300">{prog.description}</p>
       {screenshots[raw.slug] && <ImageViewer src={screenshots[raw.slug]} alt={`Screenshot: ${prog.title}`} />}
       <div className="mb-8 flex flex-col gap-3 sm:flex-row">
