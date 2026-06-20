@@ -64,8 +64,8 @@ body {
   transition: all 0.3s ease;
 }
 .glow-card:hover {
-  border-color: rgba(0, 255, 0, 0.15);
-  box-shadow: 0 0 15px rgba(0, 255, 0, 0.08), 0 0 30px rgba(0, 255, 0, 0.04);
+  border-color: rgba(0, 255, 0, 0.35);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.15), 0 0 40px rgba(0, 255, 0, 0.08);
 }
 
 .text-neon-green {
