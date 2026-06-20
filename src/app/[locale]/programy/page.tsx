@@ -15,7 +15,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: t(l, "programs.title"),
     description: t(l, "programs.description"),
-    alternates: { canonical: `https://mzdrowy.github.io/${locale}/programy` },
+    alternates: {
+      canonical: `/${locale}/programy`,
+      languages: {
+        "pl-PL": "/pl/programy",
+        "en-US": "/en/programy",
+      },
+    },
     openGraph: { title: `${t(l, "programs.title")} — MzdrowY`, description: t(l, "programs.og-desc") },
   };
 }

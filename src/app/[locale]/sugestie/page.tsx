@@ -14,7 +14,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: t(l, "sugestie.title"),
     description: t(l, "sugestie.description"),
-    alternates: { canonical: `https://mzdrowy.github.io/${locale}/sugestie` },
+    alternates: {
+      canonical: `/${locale}/sugestie`,
+      languages: {
+        "pl-PL": "/pl/sugestie",
+        "en-US": "/en/sugestie",
+      },
+    },
   };
 }
 

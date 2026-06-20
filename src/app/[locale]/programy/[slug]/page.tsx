@@ -23,12 +23,21 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const l = locale as Locale;
   const prog = programLocale(programs.find((p) => p.slug === slug)!, l);
   if (!prog) return {};
-  const url = `https://mzdrowy.github.io/${locale}/programy/${slug}`;
+  const url = `/${locale}/programy/${slug}`;
+  const image = screenshots[slug];
+  const ogImage = image ? { url: image, width: 1200, height: 630, alt: prog.title } : { url: "/og-image.png", width: 1200, height: 630, alt: prog.title };
   return {
     title: prog.title,
     description: prog.description,
-    alternates: { canonical: url },
-    openGraph: { url, title: `${prog.title} — MzdrowY`, description: prog.description },
+    alternates: {
+      canonical: url,
+      languages: {
+        "pl-PL": `/pl/programy/${slug}`,
+        "en-US": `/en/programy/${slug}`,
+      },
+    },
+    openGraph: { url, title: `${prog.title} — MzdrowY`, description: prog.description, images: [ogImage] },
+    twitter: { card: "summary_large_image", title: `${prog.title} — MzdrowY`, description: prog.description, images: [ogImage] },
   };
 }
 
@@ -39,9 +48,21 @@ export default async function ProgramPage({ params }: { params: Promise<{ locale
   if (!raw) notFound();
   const prog = programLocale(raw, l);
   const sizeMB = (raw.installerSize / (1024 * 1024)).toFixed(1);
+  const softwareSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: prog.title,
+    applicationCategory: "BusinessApplication",
+    operatingSystem: raw.platform,
+    softwareVersion: raw.version,
+    description: prog.description,
+    url: `https://mzdrowy.github.io/${locale}/programy/${slug}`,
+    offers: { "@type": "Offer", price: "0", priceCurrency: "PLN", availability: "https://schema.org/InStock" },
+  };
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-16">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }} />
       <Link href={`/${locale}/programy`} className="mb-8 inline-block text-sm text-zinc-400 hover:text-zinc-300 transition-colors">&larr; {t(l, "programs.back")}</Link>
       <h1 className="mb-1 text-3xl font-bold tracking-tight">{prog.title}</h1>
       <p className="mb-2 text-sm text-zinc-500">{raw.version} &middot; {raw.tech} &middot; {raw.platform} &middot; {raw.license}</p>
