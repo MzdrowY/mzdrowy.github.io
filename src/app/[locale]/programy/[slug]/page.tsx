@@ -34,6 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       languages: {
         "pl-PL": `/pl/programy/${slug}`,
         "en-US": `/en/programy/${slug}`,
+        "x-default": `/pl/programy/${slug}`,
       },
     },
     openGraph: { url, title: `${prog.title} — MzdrowY`, description: prog.description, images: [ogImage] },
@@ -48,6 +49,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ locale
   if (!raw) notFound();
   const prog = programLocale(raw, l);
   const sizeMB = (raw.installerSize / (1024 * 1024)).toFixed(1);
+  const screenshot = screenshots[slug];
   const softwareSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -57,6 +59,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ locale
     softwareVersion: raw.version,
     description: prog.description,
     url: `https://mzdrowy.github.io/${locale}/programy/${slug}`,
+    image: screenshot ? `https://mzdrowy.github.io${screenshot}` : "https://mzdrowy.github.io/og-image.png",
     offers: { "@type": "Offer", price: "0", priceCurrency: "PLN", availability: "https://schema.org/InStock" },
   };
 

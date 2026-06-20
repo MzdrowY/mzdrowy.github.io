@@ -20,6 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       languages: {
         "pl-PL": "/pl/programy",
         "en-US": "/en/programy",
+        "x-default": "/pl/programy",
       },
     },
     openGraph: { title: `${t(l, "programs.title")} — MzdrowY`, description: t(l, "programs.og-desc") },

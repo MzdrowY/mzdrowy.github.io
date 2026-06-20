@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Nav } from "@/components/nav";
 import { VisitTracker } from "@/components/visit-tracker";
@@ -32,6 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       languages: {
         "pl-PL": "/pl",
         "en-US": "/en",
+        "x-default": "/pl",
       },
     },
     openGraph: {
@@ -50,9 +51,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: ["/og-image.png"],
     },
     robots: { index: true, follow: true },
-    icons: { icon: [{ url: "/icon.svg", type: "image/svg+xml" }] },
+    icons: {
+      icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    },
+    manifest: "/manifest.webmanifest",
   };
 }
+
+export const viewport: Viewport = {
+  themeColor: "#09090b",
+};
 
 export default async function LocaleLayout({ params, children }: Props) {
   const { locale } = await params;

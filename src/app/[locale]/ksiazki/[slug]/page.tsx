@@ -26,6 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       languages: {
         "pl-PL": `/pl/ksiazki/${slug}`,
         "en-US": `/en/ksiazki/${slug}`,
+        "x-default": `/pl/ksiazki/${slug}`,
       },
     },
     openGraph: { url, title: `${book.title} — ${book.subtitle}`, description: book.description, images: [{ url: "/og-image.png", width: 1200, height: 630, alt: book.title }] },
@@ -51,6 +52,7 @@ export default async function EbookPage({ params }: { params: Promise<{ locale: 
     inLanguage: l === "en" ? "en" : "pl",
     description: book.description,
     url: `https://mzdrowy.github.io/${locale}/ksiazki/${slug}`,
+    image: "https://mzdrowy.github.io/og-image.png",
     offers: { "@type": "Offer", price: "0", priceCurrency: "PLN", availability: "https://schema.org/InStock" },
   };
 

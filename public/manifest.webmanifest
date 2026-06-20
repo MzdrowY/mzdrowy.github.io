@@ -1,0 +1,12 @@
+{
+  "name": "MzdrowY",
+  "short_name": "MzdrowY",
+  "description": "Darmowe ebooki o technologii i autorskie programy.",
+  "start_url": "/pl",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#09090b",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
