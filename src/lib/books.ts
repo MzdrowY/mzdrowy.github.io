@@ -66,6 +66,21 @@ export const books: Book[] = [
       "A comprehensive guide that clearly explains the world of modern artificial intelligence — from its historical roots to the latest large language models (LLMs). The book untangles confusing terminology (AI, ML, DL) and teaches you how to talk effectively with models like ChatGPT and Claude using prompt engineering techniques. A unique feature is the step-by-step guide to running local AI models on your own computer with Ollama or LM Studio — no internet required, full privacy. Essential reading for anyone who wants to use the AI revolution consciously.",
   },
   {
+    slug: "moja-pierwsza-strona",
+    titlePl: "Moja pierwsza strona",
+    titleEn: "My First Website",
+    subtitlePl: "WordPress, no-code, AI-buildery, HTML/CSS i Shopify — jak postawić pierwszą stronę w 2026 roku",
+    subtitleEn: "WordPress, no-code, AI builders, HTML/CSS and Shopify — how to build your first website in 2026",
+    file: "/books/Moja pierwsza strona.pdf",
+    fileEn: "/books/My first website.pdf",
+    pages: 52,
+    sizeBytes: 722453,
+    descriptionPl:
+      "Praktyczny przewodnik po wszystkich dostępnych drogach do własnej strony internetowej w 2026 roku. Książka prowadzi przez cztery główne ścieżki: WordPress (najpopularniejszy system, 42% rynku), HTML i CSS od podstaw (pełna kontrola i zrozumienie), no-code i AI-buildery (najszybsza droga od pomysłu do efektu) oraz Shopify dla sklepów internetowych. Każda ścieżka opisana krok po kroku — od pierwszego uruchomienia przez konfigurację po publikację — z konkretnymi przykładami i realnymi kosztami. Dodatkowo osobne rozdziały o domenach i hostingu, a na końcu drzewko decyzyjne pomagające wybrać właściwą drogę. 52 strony bez zbędnej teorii, napisane z myślą o osobach stawiających swoją pierwszą stronę.",
+    descriptionEn:
+      "A practical guide to every available path for building your first website in 2026. The book walks through four main approaches: WordPress (the most popular system, 42% market share), HTML and CSS from scratch (full control and understanding), no-code and AI builders (the fastest path from idea to result), and Shopify for online stores. Each path is explained step by step — from first launch through configuration to publication — with concrete examples and real costs. Plus dedicated chapters on domains and hosting, ending with a decision tree to help you choose the right path. 52 pages of practical advice with no fluff, written for first-time website owners.",
+  },
+  {
     slug: "mam-strone-i-co-dalej",
     titlePl: "Mam stronę i co dalej",
     titleEn: "I Have a Website, Now What",
