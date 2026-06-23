@@ -18,7 +18,7 @@ async function getCount(key: string): Promise<number> {
   } catch { return 0; }
 }
 
-const books = ["internet-domeny-dns", "pod-skora-systemu", "sztuczna-inteligencja", "mam-strone-i-co-dalej"];
+const books = ["internet-domeny-dns", "pod-skora-systemu", "sztuczna-inteligencja", "mam-strone-i-co-dalej", "moja-pierwsza-strona"];
 const programSlugs = ["anti-spaghetti", "monogram-studio", "przelew-pdf"];
 
 export default function AdminForm() {
@@ -42,6 +42,7 @@ export default function AdminForm() {
           b === "internet-domeny-dns" ? "Internet, Domeny i DNS" :
           b === "pod-skora-systemu" ? "Pod skórą systemu" :
           b === "mam-strone-i-co-dalej" ? "Mam stronę i co dalej" :
+          b === "moja-pierwsza-strona" ? "Moja pierwsza strona" :
           "Sztuczna inteligencja bez tajemnic";
         map[`📖 ${name}`] = rest[i];
       });
