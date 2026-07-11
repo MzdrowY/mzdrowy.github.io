@@ -5,7 +5,8 @@ import { Nav } from "@/components/nav";
 import { VisitTracker } from "@/components/visit-tracker";
 import { t, type Locale } from "@/lib/i18n";
 
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+const UMAMI_SRC = "https://fruit-september-cabin-hypothesis.trycloudflare.com/script.js";
+const UMAMI_ID = "26de6bdf-4239-4e30-b855-83f4160b3bbf";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -86,12 +87,7 @@ export default async function LocaleLayout({ params, children }: Props) {
         />
         <Nav locale={locale} />
         <VisitTracker />
-        {GA_ID && (
-          <>
-            <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
-            <Script id="ga4" strategy="afterInteractive">{`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${GA_ID}');`}</Script>
-          </>
-        )}
+        <Script async defer src={UMAMI_SRC} data-website-id={UMAMI_ID} strategy="afterInteractive" />
         <main className="flex-1">{children}</main>
         <footer className="border-t border-zinc-800/50 py-6 text-center text-sm text-zinc-500">
           <p>&copy; {new Date().getFullYear()} {t(locale as Locale, "site.copyright")}</p>
