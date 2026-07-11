@@ -5,7 +5,7 @@ import { Nav } from "@/components/nav";
 import { VisitTracker } from "@/components/visit-tracker";
 import { t, type Locale } from "@/lib/i18n";
 
-const UMAMI_SRC = "https://fruit-september-cabin-hypothesis.trycloudflare.com/script.js";
+const UMAMI_SRC = "https://somehow-listings-analysis-velvet.trycloudflare.com/script.js";
 const UMAMI_ID = "26de6bdf-4239-4e30-b855-83f4160b3bbf";
 
 const geistSans = Geist({
