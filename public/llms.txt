@@ -1,0 +1,11 @@
+# MzdrowY
+## Darmowe ebooki o technologii i autorskie programy
+
+- https://mzdrowy.github.io/pl
+  MzdrowY (Maciej Zdrowowicz) — pisze o technologii tak, by miała sens: darmowe ebooki o internecie, terminalu i AI oraz autorskie narzędzia (notatnik z ochroną PIN, projektant monogramów).
+- https://mzdrowy.github.io/pl/ksiazki
+  Lista darmowych ebooków do czytania online i pobrania PDF bez rejestracji.
+- https://mzdrowy.github.io/pl/programy
+  Darmowe programy dla Windows (notatnik Anti-Spaghetti, Monogram Studio).
+- https://mzdrowy.github.io/pl/sugestie
+  Zgłaszanie błędów i sugestii.

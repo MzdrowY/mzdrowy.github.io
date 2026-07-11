@@ -1,8 +1,11 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Nav } from "@/components/nav";
 import { VisitTracker } from "@/components/visit-tracker";
 import { t, type Locale } from "@/lib/i18n";
+
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -83,6 +86,12 @@ export default async function LocaleLayout({ params, children }: Props) {
         />
         <Nav locale={locale} />
         <VisitTracker />
+        {GA_ID && (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+            <Script id="ga4" strategy="afterInteractive">{`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${GA_ID}');`}</Script>
+          </>
+        )}
         <main className="flex-1">{children}</main>
         <footer className="border-t border-zinc-800/50 py-6 text-center text-sm text-zinc-500">
           <p>&copy; {new Date().getFullYear()} {t(locale as Locale, "site.copyright")}</p>
