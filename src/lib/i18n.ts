@@ -85,6 +85,15 @@ const dict: Record<Locale, Record<string, string>> = {
     "admin.views": "Odwiedziny strony",
     "admin.total-downloads": "Wszystkie pobrania",
     "admin.note": "Liczniki aktualizują się przy każdym wejściu na stronę, pobraniu PDF lub instalatora.",
+
+    "faq_free_q": "Czy muszę się rejestrować, żeby pobrać ebooka lub program?",
+    "faq_free_a": "Nie, cała zawartość strony jest całkowicie darmowa i dostępna bez rejestracji. Ebooki możesz czytać online lub pobrać PDF, programy pobrać jako instalator.",
+    "faq_format_q": "W jakim formacie są ebooki?",
+    "faq_format_a": "Wszystkie ebooki dostępne są w formacie PDF, gotowe do czytania na dowolnym urządzeniu — komputerze, tablecie, czytniku lub telefonie.",
+    "faq_en_q": "Czy ebooki są dostępne w języku angielskim?",
+    "faq_en_a": "Tak, większość ebooków dostępna jest w polskiej i angielskiej wersji językowej. Wersję możesz wybrać na stronie każdego ebooka.",
+    "faq_install_q": "Jak zainstalować pobrany program?",
+    "faq_install_a": "Pobrany instalator (.exe) uruchom na komputerze z Windows i postępuj według instrukcji. Programy są gotowe do użycia od razu po instalacji.",
   },
   en: {
     "site.title": "MzdrowY — ebooks & software",
@@ -170,6 +179,15 @@ const dict: Record<Locale, Record<string, string>> = {
     "admin.views": "Page views",
     "admin.total-downloads": "Total downloads",
     "admin.note": "Counters update on every page visit, PDF download, or installer download.",
+
+    "faq_free_q": "Do I need to register to download an ebook or software?",
+    "faq_free_a": "No, all content on this site is completely free and available without registration. You can read ebooks online, download PDFs, or download software installers.",
+    "faq_format_q": "What format are the ebooks in?",
+    "faq_format_a": "All ebooks are available in PDF format, ready to read on any device — computer, tablet, e-reader, or phone.",
+    "faq_en_q": "Are the ebooks available in English?",
+    "faq_en_a": "Yes, most ebooks are available in both Polish and English. You can choose the language version on each ebook's page.",
+    "faq_install_q": "How do I install a downloaded program?",
+    "faq_install_a": "Run the downloaded installer (.exe) on your Windows computer and follow the instructions. Programs are ready to use immediately after installation.",
   },
 };
 

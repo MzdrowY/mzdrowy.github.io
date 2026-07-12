@@ -53,6 +53,43 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           })}
         </div>
       </section>
+
+      <section className="mb-16">
+        <h2 className="mb-6 text-2xl font-semibold gradient-text">FAQ</h2>
+        <div className="space-y-4">
+          {[
+            { q: t(l, "faq_free_q"), a: t(l, "faq_free_a") },
+            { q: t(l, "faq_format_q"), a: t(l, "faq_format_a") },
+            { q: t(l, "faq_en_q"), a: t(l, "faq_en_a") },
+            { q: t(l, "faq_install_q"), a: t(l, "faq_install_a") },
+          ].map((faq, i) => (
+            <details key={i} className="glow-card group rounded-xl">
+              <summary className="cursor-pointer px-6 py-4 font-medium text-zinc-200 transition-colors hover:text-neon-green [&::-webkit-details-marker]:hidden">
+                {faq.q}
+              </summary>
+              <p className="border-t border-zinc-800/50 px-6 py-4 text-sm text-zinc-400 leading-relaxed">
+                {faq.a}
+              </p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              { "@type": "Question", "name": t(l, "faq_free_q"), "acceptedAnswer": { "@type": "Answer", "text": t(l, "faq_free_a") } },
+              { "@type": "Question", "name": t(l, "faq_format_q"), "acceptedAnswer": { "@type": "Answer", "text": t(l, "faq_format_a") } },
+              { "@type": "Question", "name": t(l, "faq_en_q"), "acceptedAnswer": { "@type": "Answer", "text": t(l, "faq_en_a") } },
+              { "@type": "Question", "name": t(l, "faq_install_q"), "acceptedAnswer": { "@type": "Answer", "text": t(l, "faq_install_a") } },
+            ],
+          }),
+        }}
+      />
     </div>
   );
 }
