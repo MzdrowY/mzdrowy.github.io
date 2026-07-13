@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>mzdrowy — propozycja designu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#191d22;
+    --surface:#20262c;
+    --surface-2:#262d34;
+    --border:#383f47;
+    --text:#e7e3da;
+    --text-dim:#9aa1a8;
+    --amber:#e8a33d;
+    --amber-dim:#8a6a3a;
+    --teal:#5fb3aa;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+
+  /* ---- header ---- */
+  header{
+    border-bottom:1px solid var(--border);
+    background:rgba(25,29,34,.9);
+    backdrop-filter:blur(6px);
+    position:sticky;top:0;z-index:10;
+  }
+  .headbar{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;}
+  .logo{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:15px;color:var(--amber);}
+  .logo::before{content:"~/";color:var(--text-dim);}
+  nav{display:flex;gap:28px;align-items:center;}
+  nav a{font-size:14px;color:var(--text-dim);transition:color .15s;}
+  nav a:hover,nav a:focus-visible{color:var(--text);}
+  .nav-links{display:flex;gap:24px;}
+  .lang{display:flex;gap:6px;font-family:'JetBrains Mono',monospace;font-size:13px;}
+  .lang span{color:var(--text-dim);padding:2px 6px;border-radius:4px;}
+  .lang span.active{color:var(--amber);border:1px solid var(--amber-dim);}
+  @media (max-width:640px){ .nav-links{display:none;} }
+
+  /* ---- hero / terminal ---- */
+  .hero{padding:72px 0 56px;}
+  .term{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 20px 60px -20px rgba(0,0,0,.6);
+  }
+  .term-bar{
+    display:flex;align-items:center;gap:8px;
+    padding:10px 14px;
+    background:var(--surface-2);
+    border-bottom:1px solid var(--border);
+  }
+  .dot{width:10px;height:10px;border-radius:50%;background:#4a5158;}
+  .term-title{margin-left:10px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-dim);}
+  .term-body{padding:24px 26px 28px;font-family:'JetBrains Mono',monospace;font-size:14.5px;}
+  .term-body .line{margin:0 0 10px;color:var(--text-dim);}
+  .prompt{color:var(--teal);}
+  .path{color:var(--amber);}
+  .cmd{color:var(--text);}
+  .out{color:var(--text-dim);margin:2px 0 18px;}
+  .cursor{display:inline-block;width:8px;height:16px;background:var(--amber);vertical-align:-3px;animation:blink 1s steps(1) infinite;}
+  @keyframes blink{50%{opacity:0;}}
+  @media (prefers-reduced-motion:reduce){ .cursor{animation:none;} }
+
+  h1.title{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:clamp(32px,5vw,46px);
+    line-height:1.15;
+    margin:36px 0 14px;
+    letter-spacing:-.01em;
+  }
+  .lede{color:var(--text-dim);font-size:17px;max-width:56ch;margin:0;}
+
+  /* ---- sections ---- */
+  section{padding:56px 0;border-top:1px solid var(--border);}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;color:var(--teal);
+    margin:0 0 6px;
+  }
+  .eyebrow::before{content:"$ ";color:var(--text-dim);}
+  h2.section-title{
+    font-family:'Fraunces',serif;font-weight:500;
+    font-size:28px;margin:0 0 28px;
+  }
+  .free-tag{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--amber);border:1px solid var(--amber-dim);padding:2px 8px;border-radius:4px;margin-left:10px;vertical-align:2px;}
+
+  /* file listing rows */
+  .listing{border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+  .row{
+    display:flex;align-items:center;gap:16px;
+    padding:16px 18px;
+    background:var(--surface);
+    border-bottom:1px solid var(--border);
+    transition:background .15s;
+  }
+  .listing .row:last-child{border-bottom:none;}
+  .row:hover{background:var(--surface-2);}
+  .row .icon{
+    font-family:'JetBrains Mono',monospace;font-size:13px;
+    color:var(--amber);width:74px;flex:0 0 auto;
+  }
+  .row .info{flex:1;min-width:0;}
+  .row .fname{font-family:'JetBrains Mono',monospace;font-size:14.5px;color:var(--text);}
+  .row .fdesc{font-size:13.5px;color:var(--text-dim);margin-top:3px;}
+  .row .go{font-size:13px;color:var(--teal);white-space:nowrap;flex:0 0 auto;}
+  @media (max-width:560px){
+    .row{flex-wrap:wrap;}
+    .row .go{margin-left:90px;}
+  }
+
+  /* FAQ as --help */
+  .help-block{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:22px 24px;}
+  .flag{margin:0 0 22px;}
+  .flag:last-child{margin-bottom:0;}
+  .flag .f{font-family:'JetBrains Mono',monospace;color:var(--amber);font-size:14px;}
+  .flag .desc{color:var(--text-dim);font-size:14.5px;margin:6px 0 0;max-width:64ch;}
+
+  footer{border-top:1px solid var(--border);padding:32px 0 40px;}
+  .foot-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--text-dim);font-family:'JetBrains Mono',monospace;}
+  .foot-row a{color:var(--text-dim);}
+  .foot-row a:hover{color:var(--amber);}
+
+  :focus-visible{outline:2px solid var(--amber);outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="headbar wrap">
+    <a href="#" class="logo">mzdrowy</a>
+    <nav>
+      <div class="nav-links">
+        <a href="#">Strona główna</a>
+        <a href="#ebooki">Ebooki</a>
+        <a href="#programy">Programy</a>
+        <a href="#">Zgłoś błąd</a>
+      </div>
+      <div class="lang">
+        <span class="active">pl</span><span>en</span>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero" style="border-top:none;">
+    <div class="term">
+      <div class="term-bar">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <span class="term-title">mzdrowy@strona:~</span>
+      </div>
+      <div class="term-body">
+        <p class="line"><span class="prompt">mzdrowy@strona</span><span class="path">:~$</span> <span class="cmd">cat o_mnie.txt</span></p>
+        <p class="out">Piszę o technologii tak, żeby miało to sens — bez żargonu,<br>bez skrótów myślowych. Wszystko bezpłatnie, bez rejestracji.</p>
+        <p class="line"><span class="prompt">mzdrowy@strona</span><span class="path">:~$</span> <span class="cmd">ls zasoby/ --darmowe</span><span class="cursor"></span></p>
+      </div>
+    </div>
+
+    <h1 class="title">Ebooki i narzędzia,<br>które sam wykorzystuję.</h1>
+    <p class="lede">Darmowe przewodniki o internecie, terminalu i AI oraz programy, które zrobiłem, bo sam ich potrzebowałem. Zero rejestracji, zero haczyków.</p>
+  </section>
+
+  <section id="ebooki">
+    <p class="eyebrow mono">ls ./ebooki</p>
+    <h2 class="section-title">Ebooki <span class="free-tag">darmowe</span></h2>
+    <div class="listing">
+      <div class="row">
+        <div class="icon">.pdf</div>
+        <div class="info">
+          <div class="fname">internet-domeny-dns.pdf</div>
+          <div class="fdesc">Internet, domeny i DNS — podręcznik edukacyjny od podstaw</div>
+        </div>
+        <div class="go">Otwórz →</div>
+      </div>
+      <div class="row">
+        <div class="icon">.pdf</div>
+        <div class="info">
+          <div class="fname">pod-skora-systemu.pdf</div>
+          <div class="fdesc">Przewodnik po terminalu dla Windows i macOS</div>
+        </div>
+        <div class="go">Otwórz →</div>
+      </div>
+      <div class="row">
+        <div class="icon">.pdf</div>
+        <div class="info">
+          <div class="fname">sztuczna-inteligencja.pdf</div>
+          <div class="fdesc">AI wyjaśniona przystępnie, bez tajemnic</div>
+        </div>
+        <div class="go">Otwórz →</div>
+      </div>
+      <div class="row">
+        <div class="icon">.pdf</div>
+        <div class="info">
+          <div class="fname">moja-pierwsza-strona.pdf</div>
+          <div class="fdesc">WordPress, no-code, AI-buildery, HTML/CSS i Shopify — jak postawić stronę w 2026</div>
+        </div>
+        <div class="go">Otwórz →</div>
+      </div>
+      <div class="row">
+        <div class="icon">.pdf</div>
+        <div class="info">
+          <div class="fname">mam-strone-i-co-dalej.pdf</div>
+          <div class="fdesc">Praktyczny poradnik dla właścicieli stron internetowych</div>
+        </div>
+        <div class="go">Otwórz →</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="programy">
+    <p class="eyebrow mono">ls ./programy</p>
+    <h2 class="section-title">Programy <span class="free-tag">darmowe</span></h2>
+    <div class="listing">
+      <div class="row">
+        <div class="icon">.exe</div>
+        <div class="info">
+          <div class="fname">anti-spaghetti.exe</div>
+          <div class="fdesc">Podręczny notatnik-składnica z ochroną PIN</div>
+        </div>
+        <div class="go">Szczegóły →</div>
+      </div>
+      <div class="row">
+        <div class="icon">.exe</div>
+        <div class="info">
+          <div class="fname">monogram-studio.exe</div>
+          <div class="fdesc">Proste, eleganckie narzędzie do projektowania monogramów i sygnatur</div>
+        </div>
+        <div class="go">Szczegóły →</div>
+      </div>
+      <div class="row">
+        <div class="icon">.exe</div>
+        <div class="info">
+          <div class="fname">przelew-pdf.exe</div>
+          <div class="fdesc">Wypełnianie poleceń przelewu i wpłat gotówkowych na blankiecie PPWG</div>
+        </div>
+        <div class="go">Szczegóły →</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <p class="eyebrow mono">mzdrowy --help</p>
+    <h2 class="section-title">FAQ</h2>
+    <div class="help-block">
+      <div class="flag">
+        <div class="f">--rejestracja</div>
+        <p class="desc">Nie. Cała zawartość strony jest całkowicie darmowa i dostępna bez rejestracji. Ebooki czytasz online lub pobierasz jako PDF, programy pobierasz jako instalator.</p>
+      </div>
+      <div class="flag">
+        <div class="f">--format</div>
+        <p class="desc">Wszystkie ebooki dostępne są w formacie PDF, gotowe do czytania na komputerze, tablecie, czytniku lub telefonie.</p>
+      </div>
+      <div class="flag">
+        <div class="f">--english</div>
+        <p class="desc">Tak, większość ebooków dostępna jest po polsku i po angielsku. Wersję wybierasz na stronie każdego ebooka.</p>
+      </div>
+      <div class="flag">
+        <div class="f">--instalacja</div>
+        <p class="desc">Pobrany instalator (.exe) uruchamiasz na Windows i postępujesz według instrukcji. Program jest gotowy do użycia od razu po instalacji.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>© 2026 MzdrowY</span>
+    <a href="#">mzdrowy@gmail.com</a>
+    <a href="#">Panel</a>
+  </div>
+</footer>
+
+</body>
+</html>

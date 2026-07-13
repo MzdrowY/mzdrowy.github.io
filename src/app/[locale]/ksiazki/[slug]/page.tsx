@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import { type Locale, t } from "@/lib/i18n";
 import { books, bookLocale } from "@/lib/books";
 import { TrackedLink } from "@/components/tracked-link";
-import { PlFlag, EnFlag } from "@/components/icons";
 
 export const dynamic = "force-static";
 
@@ -57,33 +56,38 @@ export default async function EbookPage({ params }: { params: Promise<{ locale: 
   };
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-16">
+    <section className="hero" style={{ borderTop: "none" }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(bookSchema) }} />
-      <Link href={`/${locale}/ksiazki`} className="mb-8 inline-block text-sm text-zinc-500 hover:text-neon-green transition-colors">&larr; {t(l, "books.back")}</Link>
-      <h1 className="mb-2 text-4xl font-bold tracking-tight gradient-text">{book.title}</h1>
-      <p className="mb-2 text-lg text-zinc-400">{book.subtitle}</p>
-      <p className="mb-2 text-sm text-zinc-500">{book.pages} {t(l, "books.pages")} &middot; {sizeMB} MB &middot; <span className="text-neon-green">{t(l, "books.free")}</span></p>
-      <p className="mb-10 text-sm text-zinc-300 leading-relaxed">{book.description}</p>
-      <div className="flex flex-col gap-4 sm:flex-row">
-        <TrackedLink href={book.file} className="glow-card flex items-center justify-center rounded-xl px-8 py-4 text-center font-medium transition-all hover:border-green-500/30 hover:shadow-[0_0_20px_rgba(0,255,0,0.1)]">{t(l, "books.read")}</TrackedLink>
-        <TrackedLink href={book.file} download className="flex items-center justify-center rounded-xl bg-gradient-to-r from-green-600 to-cyan-600 px-8 py-4 text-center font-medium text-white transition-all hover:from-green-500 hover:to-cyan-500 hover:shadow-[0_0_20px_rgba(0,255,0,0.2)]">{t(l, "books.download")}</TrackedLink>
+      <Link href={`/${locale}/ksiazki`} className="mono text-sm text-[var(--text-dim)] hover:text-[var(--amber)] transition-colors">
+        &larr; {t(l, "books.back")}
+      </Link>
+      <h1 className="font-['Fraunces',serif] font-medium text-[clamp(28px,4vw,38px)] leading-[1.15] my-[24px_12px] tracking-[-.01em]">
+        {book.title}
+      </h1>
+      <p className="text-[var(--text-dim)] text-[15px] mb-2">{book.pages} {t(l, "books.pages")} &middot; {sizeMB} MB &middot; <span className="text-[var(--amber)]">{t(l, "books.free")}</span></p>
+      <p className="text-[var(--text-dim)] text-[15px] leading-relaxed mb-8" style={{ maxWidth: "64ch" }}>{book.description}</p>
+      <div className="flex flex-col gap-3 sm:flex-row mb-6">
+        <TrackedLink href={book.file} className="inline-flex items-center justify-center px-6 py-3 text-sm font-mono text-[var(--amber)] border border-[var(--amber-dim)] rounded-lg hover:bg-[var(--surface-2)] transition-colors">
+          {t(l, "books.read")}
+        </TrackedLink>
+        <TrackedLink href={book.file} download className="inline-flex items-center justify-center px-6 py-3 text-sm font-mono text-[var(--text)] bg-[var(--surface)] border border-[var(--border)] rounded-lg hover:bg-[var(--surface-2)] transition-colors">
+          {t(l, "books.download")}
+        </TrackedLink>
       </div>
       {raw.fileEn && (
-        <div className="mt-6">
-          <p className="mb-3 text-sm text-zinc-500">{t(l, "books.also-available")}:</p>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <TrackedLink href={raw.file} download className="glow-card flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-medium">
-              <PlFlag className="h-4 w-6 rounded-sm shrink-0" />
+        <div className="mb-6">
+          <p className="text-sm text-[var(--text-dim)] mb-3">{t(l, "books.also-available")}:</p>
+          <div className="flex flex-col gap-2 sm:flex-row">
+            <TrackedLink href={raw.file} download className="inline-flex items-center gap-2 px-5 py-2.5 text-sm text-[var(--text-dim)] border border-[var(--border)] rounded-lg hover:bg-[var(--surface-2)] transition-colors">
               {t(l, "books.download-pl")}
             </TrackedLink>
-            <TrackedLink href={raw.fileEn} download className="glow-card flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-medium">
-              <EnFlag className="h-4 w-6 rounded-sm shrink-0" />
+            <TrackedLink href={raw.fileEn} download className="inline-flex items-center gap-2 px-5 py-2.5 text-sm text-[var(--text-dim)] border border-[var(--border)] rounded-lg hover:bg-[var(--surface-2)] transition-colors">
               {t(l, "books.download-en")}
             </TrackedLink>
           </div>
         </div>
       )}
-      <p className="mt-8 text-sm text-zinc-500">{t(l, "books.pdf-note")}</p>
-    </div>
+      <p className="text-sm text-[var(--text-dim)]">{t(l, "books.pdf-note")}</p>
+    </section>
   );
 }

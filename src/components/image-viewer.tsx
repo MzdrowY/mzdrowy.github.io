@@ -8,8 +8,8 @@ export function ImageViewer({ src, alt }: { src: string; alt: string }) {
 
   return (
     <>
-      <div className="mb-8 cursor-pointer" onClick={() => setOpen(true)}>
-        <Image src={src} alt={alt} width={800} height={450} className="w-full rounded-xl" unoptimized />
+      <div className="mb-8 cursor-pointer rounded-lg border border-[var(--border)] overflow-hidden" onClick={() => setOpen(true)}>
+        <Image src={src} alt={alt} width={800} height={450} className="w-full" unoptimized />
       </div>
       {open && (
         <div
@@ -21,7 +21,7 @@ export function ImageViewer({ src, alt }: { src: string; alt: string }) {
             alt={alt}
             width={1200}
             height={675}
-            className="max-h-full max-w-full rounded-lg"
+            className="max-h-full max-w-full rounded-lg border border-[var(--border)]"
             onClick={(e) => e.stopPropagation()}
             unoptimized
           />

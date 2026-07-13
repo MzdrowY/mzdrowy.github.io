@@ -7,12 +7,14 @@ const ebookNames: Record<string, Record<string, string>> = {
     "internet-domeny-dns": "Internet, Domeny i DNS",
     "pod-skora-systemu": "Pod skórą systemu",
     "sztuczna-inteligencja": "Sztuczna inteligencja bez tajemnic",
+    "moja-pierwsza-strona": "Moja pierwsza strona",
     "mam-strone-i-co-dalej": "Mam stronę i co dalej",
   },
   en: {
     "internet-domeny-dns": "Internet, Domains & DNS",
     "pod-skora-systemu": "Under the Hood of Your OS",
     "sztuczna-inteligencja": "Artificial Intelligence Unpacked",
+    "moja-pierwsza-strona": "My First Website",
     "mam-strone-i-co-dalej": "I Have a Website, Now What",
   },
 };
@@ -97,60 +99,66 @@ export function SugestieForm({ locale }: { locale: string }) {
 
   return (
     <>
-      <p className="mb-10 text-sm text-zinc-400">{d.desc}</p>
+      <p className="eyebrow mono">$ {l === "pl" ? "cat kontakt.txt" : "cat contact.txt"}</p>
+      <h2 className="section-title">{d.title}</h2>
+      <p className="text-[var(--text-dim)] text-[15px] mb-8" style={{ maxWidth: "64ch" }}>{d.desc}</p>
       {sent ? (
-        <p className="rounded-xl border border-green-500/30 bg-green-900/20 p-6 text-sm text-neon-green">{d.sent}</p>
+        <div className="help-block">
+          <p className="text-[var(--amber)] mono">{d.sent}</p>
+        </div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <div>
-            <label className="mb-1 block text-sm text-zinc-400">{d.category}</label>
+        <form onSubmit={handleSubmit} className="help-block" style={{ padding: "24px" }}>
+          <div className="flag">
+            <label className="f">{d.category}</label>
             <select value={category} onChange={(e) => { setCategory(e.target.value); setItem(""); }} required
-              className="w-full rounded-xl border border-zinc-700 bg-black/60 px-4 py-3 text-sm text-zinc-100 outline-none focus:border-green-500/30 transition-colors">
+              className="w-full mt-2 px-4 py-3 text-sm bg-[var(--bg)] border border-[var(--border)] rounded-lg text-[var(--text)] outline-none focus:border-[var(--amber)] transition-colors">
               <option value="">{d.choose}</option>
               {categories.map((c) => <option key={c} value={c}>{c}</option>)}
             </select>
           </div>
-          <div>
-            <label className="mb-1 block text-sm text-zinc-400">{d.which}</label>
+          <div className="flag">
+            <label className="f">{d.which}</label>
             <select value={item} onChange={(e) => setItem(e.target.value)}
-              className="w-full rounded-xl border border-zinc-700 bg-black/60 px-4 py-3 text-sm text-zinc-100 outline-none focus:border-green-500/30 transition-colors">
+              className="w-full mt-2 px-4 py-3 text-sm bg-[var(--bg)] border border-[var(--border)] rounded-lg text-[var(--text)] outline-none focus:border-[var(--amber)] transition-colors">
               <option value="">{d.choose}</option>
               {filtered.map((i) => <option key={i.name} value={i.name}>{i.name}</option>)}
             </select>
           </div>
-          <div>
-            <label className="mb-1 block text-sm text-zinc-400">{d.optional}</label>
+          <div className="flag">
+            <label className="f">{d.optional}</label>
             <input type="text" value={optional} onChange={(e) => setOptional(e.target.value)} placeholder={d.emailPlaceholder}
-              className="w-full rounded-xl border border-zinc-700 bg-black/60 px-4 py-3 text-sm text-zinc-100 outline-none placeholder-zinc-600 focus:border-green-500/30 transition-colors" />
+              className="w-full mt-2 px-4 py-3 text-sm bg-[var(--bg)] border border-[var(--border)] rounded-lg text-[var(--text)] outline-none placeholder-[var(--text-dim)] focus:border-[var(--amber)] transition-colors" />
           </div>
-          <div>
-            <label className="mb-1 block text-sm text-zinc-400">{d.name} <span className="text-zinc-600">{d.nameOptional}</span></label>
+          <div className="flag">
+            <label className="f">{d.name} <span className="text-[var(--text-dim)] text-xs">{d.nameOptional}</span></label>
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder={d.namePlaceholder}
-              className="w-full rounded-xl border border-zinc-700 bg-black/60 px-4 py-3 text-sm text-zinc-100 outline-none placeholder-zinc-600 focus:border-green-500/30 transition-colors" />
+              className="w-full mt-2 px-4 py-3 text-sm bg-[var(--bg)] border border-[var(--border)] rounded-lg text-[var(--text)] outline-none placeholder-[var(--text-dim)] focus:border-[var(--amber)] transition-colors" />
           </div>
-          <div>
-            <label className="mb-1 block text-sm text-zinc-400">{d.message}</label>
+          <div className="flag" style={{ marginBottom: "24px" }}>
+            <label className="f">{d.message}</label>
             <textarea value={message} onChange={(e) => setMessage(e.target.value)} required rows={5} placeholder={d.messagePlaceholder}
-              className="w-full resize-none rounded-xl border border-zinc-700 bg-black/60 px-4 py-3 text-sm text-zinc-100 outline-none placeholder-zinc-600 focus:border-green-500/30 transition-colors" />
+              className="w-full mt-2 resize-none px-4 py-3 text-sm bg-[var(--bg)] border border-[var(--border)] rounded-lg text-[var(--text)] outline-none placeholder-[var(--text-dim)] focus:border-[var(--amber)] transition-colors" />
           </div>
-          <button type="submit" className="w-full rounded-xl bg-gradient-to-r from-green-600 to-cyan-600 px-6 py-3 text-sm font-medium text-white transition-all hover:from-green-500 hover:to-cyan-500 hover:shadow-[0_0_20px_rgba(0,255,0,0.2)]">{d.send}</button>
+          <button type="submit" className="w-full px-6 py-3 text-sm font-mono text-[var(--amber)] border border-[var(--amber-dim)] rounded-lg hover:bg-[var(--surface-2)] transition-colors">
+            {d.send}
+          </button>
         </form>
       )}
-      <div className="mt-16">
-        <h2 className="mb-4 text-lg font-semibold gradient-text-green">{d.available}</h2>
-        <div className="glow-card overflow-x-auto rounded-xl">
+      <div className="mt-12">
+        <h2 className="font-['Fraunces',serif] font-medium text-[22px] mb-4">{d.available}</h2>
+        <div className="listing">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-zinc-800">
-                <th className="px-4 py-3 text-left font-medium text-zinc-400">{d.typeCol}</th>
-                <th className="px-4 py-3 text-left font-medium text-zinc-400">{d.nameCol}</th>
+              <tr className="border-b border-[var(--border)]">
+                <th className="px-4 py-3 text-left font-mono text-[13px] text-[var(--teal)]">{d.typeCol}</th>
+                <th className="px-4 py-3 text-left font-mono text-[13px] text-[var(--teal)]">{d.nameCol}</th>
               </tr>
             </thead>
             <tbody>
               {tableRows.map((i) => (
-                <tr key={i.name} className="border-b border-zinc-800/50 last:border-0">
-                  <td className="px-4 py-3 text-zinc-500">{i.type}</td>
-                  <td className="px-4 py-3 text-zinc-300">{i.name}</td>
+                <tr key={i.name} className="border-b border-[var(--border)] last:border-0">
+                  <td className="px-4 py-3 text-[var(--text-dim)]">{i.type}</td>
+                  <td className="px-4 py-3 text-[var(--text)]">{i.name}</td>
                 </tr>
               ))}
             </tbody>

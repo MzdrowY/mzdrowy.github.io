@@ -64,20 +64,33 @@ export default async function ProgramPage({ params }: { params: Promise<{ locale
   };
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-16">
+    <section className="hero" style={{ borderTop: "none" }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }} />
-      <Link href={`/${locale}/programy`} className="mb-8 inline-block text-sm text-zinc-500 hover:text-neon-green transition-colors">&larr; {t(l, "programs.back")}</Link>
-      <h1 className="mb-1 text-3xl font-bold tracking-tight gradient-text">{prog.title}</h1>
-      <p className="mb-2 text-sm text-zinc-500">{raw.version} &middot; {raw.tech} &middot; {raw.platform} &middot; {raw.license}</p>
-      <p className="mb-8 text-sm leading-relaxed text-zinc-300">{prog.description}</p>
+      <Link href={`/${locale}/programy`} className="mono text-sm text-[var(--text-dim)] hover:text-[var(--amber)] transition-colors">
+        &larr; {t(l, "programs.back")}
+      </Link>
+      <h1 className="font-['Fraunces',serif] font-medium text-[clamp(28px,4vw,38px)] leading-[1.15] my-[24px_8px] tracking-[-.01em]">
+        {prog.title}
+      </h1>
+      <p className="mono text-sm text-[var(--text-dim)] mb-6">{raw.version} &middot; {raw.tech} &middot; {raw.platform} &middot; {raw.license}</p>
+      <p className="text-[var(--text-dim)] text-[15px] leading-relaxed mb-8" style={{ maxWidth: "64ch" }}>{prog.description}</p>
       {screenshots[raw.slug] && <ImageViewer src={screenshots[raw.slug]} alt={`Screenshot: ${prog.title}`} />}
-      <div className="mb-8 flex flex-col gap-3 sm:flex-row">
+      <div className="flex flex-col gap-3 sm:flex-row items-start mb-8">
         <TrackedDownload href={raw.installer} label={t(l, "programs.download-win")} slug={raw.slug} />
-        <span className="inline-flex items-center text-sm text-zinc-500">{sizeMB} MB &middot; .exe</span>
-        {raw.repo && <a href={raw.repo} target="_blank" rel="noopener noreferrer" className="glow-card inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-medium transition-all hover:border-purple-500/30 hover:shadow-[0_0_20px_rgba(168,85,247,0.1)]">GitHub &rarr;</a>}
+        <span className="inline-flex items-center mono text-sm text-[var(--text-dim)]">{sizeMB} MB &middot; .exe</span>
+        {raw.repo && (
+          <a href={raw.repo} target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm text-[var(--teal)] border border-[var(--border)] rounded-lg hover:bg-[var(--surface-2)] transition-colors">
+            GitHub &rarr;
+          </a>
+        )}
       </div>
-      <h2 className="mb-3 text-lg font-semibold gradient-text-green">{t(l, "programs.features")}</h2>
-      <ul className="space-y-1.5">{raw.features.map((f) => <li key={f} className="text-sm text-zinc-400">&bull; {f}</li>)}</ul>
-    </div>
+      <h2 className="font-['JetBrains_Mono',monospace] text-sm text-[var(--teal)] mb-4">$ {t(l, "programs.features").toLowerCase()}</h2>
+      <ul className="space-y-2">
+        {raw.features.map((f) => (
+          <li key={f} className="text-sm text-[var(--text-dim)]" style={{ paddingLeft: "20px" }}>&bull; {f}</li>
+        ))}
+      </ul>
+    </section>
   );
 }

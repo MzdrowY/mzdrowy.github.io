@@ -30,24 +30,31 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ProgramsPage({ params }: Props) {
   const { locale } = await params;
   const l = locale as Locale;
+  const isPl = l === "pl";
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-16">
-      <h1 className="mb-8 text-4xl font-bold tracking-tight gradient-text">{t(l, "programs.title")}</h1>
-      <div className="grid gap-4 sm:grid-cols-2">
-        {programs.map((p) => {
-          const prog = programLocale(p, l);
-          const sizeMB = (p.installerSize / (1024 * 1024)).toFixed(1);
-          return (
-            <Link key={p.slug} href={`/${locale}/programy/${p.slug}`} className="glow-card rounded-xl p-6 flex flex-col">
-              <h2 className="mb-1 font-semibold text-zinc-100">{prog.title}</h2>
-              <p className="mb-1 text-xs text-zinc-500">{p.version} &middot; {sizeMB} MB &middot; {p.platform}</p>
-              <p className="mb-3 flex-1 text-sm text-zinc-400">{prog.subtitle}</p>
-              <span className="text-sm font-medium text-neon-cyan">{t(l, "home.check-program")}</span>
-            </Link>
-          );
-        })}
-      </div>
-    </div>
+    <>
+      <section className="hero" style={{ borderTop: "none" }}>
+        <p className="eyebrow mono">{isPl ? "ls ./programy" : "ls ./software"}</p>
+        <h2 className="section-title">
+          {t(l, "programs.title")} <span className="free-tag">{isPl ? "darmowe" : "free"}</span>
+        </h2>
+        <div className="listing">
+          {programs.map((p) => {
+            const prog = programLocale(p, l);
+            return (
+              <Link key={p.slug} href={`/${locale}/programy/${p.slug}`} className="row">
+                <span className="icon">.exe</span>
+                <span className="info">
+                  <span className="fname">{p.slug}.exe</span>
+                  <span className="fdesc">{prog.subtitle}</span>
+                </span>
+                <span className="go">{isPl ? "Szczegóły →" : "Details →"}</span>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+    </>
   );
 }

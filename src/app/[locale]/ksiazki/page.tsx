@@ -27,30 +27,42 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+const ebookDescs: Record<string, string> = {
+  "internet-domeny-dns": "Internet, domeny i DNS — podręcznik edukacyjny od podstaw",
+  "pod-skora-systemu": "Przewodnik po terminalu dla Windows i macOS",
+  "sztuczna-inteligencja": "AI wyjaśniona przystępnie, bez tajemnic",
+  "moja-pierwsza-strona": "WordPress, no-code, AI-buildery, HTML/CSS i Shopify — jak postawić stronę w 2026",
+  "mam-strone-i-co-dalej": "Praktyczny poradnik dla właścicieli stron internetowych",
+};
+
 export default async function BooksPage({ params }: Props) {
   const { locale } = await params;
   const l = locale as Locale;
+  const isPl = l === "pl";
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-16">
-      <h1 className="mb-2 text-4xl font-bold tracking-tight gradient-text">{t(l, "books.title")}</h1>
-      <p className="mb-8 text-sm text-zinc-500">{t(l, "books.subtitle")}</p>
-      <div className="grid gap-6 sm:grid-cols-2">
-        {books.map((b) => {
-          const book = bookLocale(b, l);
-          return (
-            <Link key={b.slug} href={`/${locale}/ksiazki/${b.slug}`} className="glow-card rounded-xl p-6 flex flex-col">
-              <h2 className="mb-2 text-xl font-semibold text-zinc-100">{book.title}</h2>
-              <p className="mb-4 flex-1 text-sm text-zinc-400">{book.subtitle}</p>
-              <span className="text-sm font-medium text-neon-cyan">{t(l, "home.check-ebook")}</span>
-            </Link>
-          );
-        })}
-        <div className="glow-card rounded-xl p-6 sm:col-span-2 flex flex-col border-dashed opacity-60">
-          <h2 className="mb-2 text-xl font-semibold text-zinc-400">{t(l, "books.coming-soon")}</h2>
-          <p className="text-sm text-zinc-500">{t(l, "books.coming-soon-desc")}</p>
+    <>
+      <section className="hero" style={{ borderTop: "none" }}>
+        <p className="eyebrow mono">{isPl ? "ls ./ebooki" : "ls ./ebooks"}</p>
+        <h2 className="section-title">
+          {t(l, "books.title")} <span className="free-tag">{isPl ? "darmowe" : "free"}</span>
+        </h2>
+        <div className="listing">
+          {books.map((b) => {
+            const book = bookLocale(b, l);
+            return (
+              <Link key={b.slug} href={`/${locale}/ksiazki/${b.slug}`} className="row">
+                <span className="icon">.pdf</span>
+                <span className="info">
+                  <span className="fname">{b.slug}.pdf</span>
+                  <span className="fdesc">{isPl ? (ebookDescs[b.slug] || book.subtitle) : book.subtitle}</span>
+                </span>
+                <span className="go">{isPl ? "Otwórz →" : "Open →"}</span>
+              </Link>
+            );
+          })}
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }
